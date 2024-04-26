@@ -1,0 +1,126 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: $dark;
+
+    .hamburger {
+        display: none;
+    }
+
+    .tablet-menu {
+        display: none;
+    }
+
+    h1 {
+        font-family: $forum;
+        font-size: 30px;
+        line-height: 167%;
+        letter-spacing: 0.02em;
+        color: $white;
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        ul {
+            display: flex;
+            gap: 30px;
+    
+            a {
+                font-family: $inter;
+                font-size: 20px;
+                line-height: 250%;
+                color: $white;
+                text-decoration: none;
+            }
+        }
+
+        div {
+            display: block; /* Проверить! */
+        }
+    }
+
+    @include tablet {
+        .nav {
+            display: none;
+        }
+
+        .hamburger {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 40px;
+            padding-right: 20px;
+
+            img {
+                position: relative;
+                z-index: 21;
+            }
+
+            .lines {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                z-index: 21;
+
+                .line {
+                    width: 45px;
+                    height: 0;
+                    border: 2px solid $white;
+                    transform-box: fill-box;
+	                transform-origin: center;
+                    transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+                }
+
+                .active-line-1 {
+                    transform: translateY(15px) rotate(-225deg);
+                }
+                  
+                .active-line-2 {
+                    opacity: 0;
+                }
+                  
+                .active-line-3 {
+                    transform: translateY(-13px) rotate(225deg);
+                }
+            }
+        }
+
+        .tablet-menu {
+            top: -100%;
+            position: absolute;
+            right: 0;
+            z-index: 20;
+            width: 332px;
+            height: 570px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: $black;
+            transition: all ease-in-out .5s;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+        
+                a {
+                    font-family: $inter;
+                    font-size: 20px;
+                    line-height: 250%;
+                    color: $white;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tablet-menu.active {
+            top: 0;
+        }
+    }
+}

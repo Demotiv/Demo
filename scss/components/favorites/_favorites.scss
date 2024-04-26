@@ -1,0 +1,98 @@
+.favorites {
+    padding: 0 20px 0 20px;
+    
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+    }
+    .title {
+        @extend %title-block;
+        
+        & h2 {
+            @extend %title;
+        }
+
+        & hr {
+            @extend %hr;
+        }
+    }
+
+    .season {
+        margin-bottom: 40px;
+
+        & h3 {
+            font-family: $inter;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 120%;
+            color: $black; 
+        }
+
+        .radio-container {
+            display: flex;
+            gap: 90px;
+            margin-top: 45px;
+
+            &__element {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                font-family: $inter;
+                font-size: 20px;
+                color: $black;
+
+                input[type="radio"] {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 17px;
+                    height: 17px;
+                    margin: 0;
+                    border: 2px solid $black;
+                    border-radius: 50%;
+                    appearance: none;
+
+                    &:checked {
+                        &::before {
+                            width: 7px;
+                            height: 7px;
+                            background-color: $black;
+                            border-radius: 50%;
+                            content: "";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .cards-container {
+        display: flex;
+        gap: 220px;
+        overflow: hidden;
+
+        @include tablet {
+            flex-direction: row;
+            max-width: 590px;
+            align-self: center;
+        }
+
+        .books-wrapper {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 220px;
+            grid-row-gap: 40px;
+            margin-bottom: 40px;
+            right: 0px;
+            transition: right 0.5s ease-in-out;
+
+            @include tablet {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        @extend %books;
+    }
+}

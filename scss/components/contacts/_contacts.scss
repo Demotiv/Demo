@@ -1,0 +1,67 @@
+.contacts {
+    margin-bottom: 20px;
+    padding: 0px 20px 0px 20px;
+    
+    .title {
+        margin-bottom: 40px;
+        @extend %title-block;
+
+        h2 {
+            @extend %title;
+        }
+
+        hr {
+            @extend %hr;
+        }
+    }
+
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+
+            &__map {
+                align-self: center;
+            }
+        }
+
+        &__container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__title {
+            @extend %contacts__info-style;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        &__phones {
+            @extend %contacts__info-style;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        &__staff {
+            @extend %contacts__info-style;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            p:first-child {
+                font-weight: bold;
+            }
+
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+}
