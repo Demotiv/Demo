@@ -17,6 +17,10 @@
                 font-size: 15px;
                 line-height: 133%;
                 color: $white;
+
+                &:hover {
+                    color: $sand;
+                }
             }
     
             .social-media ul {
@@ -55,10 +59,13 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        font-family: $inter;
-        font-size: 20px;
-        line-height: 200%;
-        letter-spacing: 0.1em;
-        color: $white;
+        
+        span {
+            font-family: $inter;
+            font-size: 20px;
+            line-height: 200%;
+            letter-spacing: 0.1em;
+            color: $white;
+        }
     }
 }

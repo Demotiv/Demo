@@ -161,6 +161,11 @@
                     border-radius: 2px;
                     background-color: $white;
                     cursor: pointer;
+
+                    &:hover {
+                        border: 1px solid $sand;
+                        color: $sand;
+                    }
                 }
             }
 

@@ -866,6 +866,10 @@ button {
   background-color: #FFFFFF;
   cursor: pointer;
 }
+.library-card .cards-info .get-a-card__buttons button:hover {
+  border: 1px solid #BB945F;
+  color: #BB945F;
+}
 
 .footer {
   padding: 20px 20px 44px 20px;
@@ -886,6 +890,9 @@ button {
   font-size: 15px;
   line-height: 133%;
   color: #FFFFFF;
+}
+.footer .footer-info .footer-contact span:hover {
+  color: #BB945F;
 }
 .footer .footer-info .footer-contact .social-media ul {
   display: flex;
@@ -915,6 +922,8 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.footer .footer-rss span {
   font-family: "Inter", sans-serif;
   font-size: 20px;
   line-height: 200%;
