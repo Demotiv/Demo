@@ -109,6 +109,7 @@ radioBtn.forEach((radio, index) => {
     books.forEach(book => {
       rightValue = index * slidePos
       book.style.right = rightValue + 'px'
+      book.style.fontWeight = 'bold'
     })
   }) 
 })

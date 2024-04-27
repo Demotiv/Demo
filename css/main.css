@@ -550,6 +550,9 @@ table {
   border-radius: 50%;
   content: "";
 }
+.favorites .season .radio-container__element input[type=radio]:checked + label {
+  font-weight: bold;
+}
 .favorites .cards-container {
   display: flex;
   gap: 220px;
