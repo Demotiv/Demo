@@ -487,6 +487,7 @@ table {
 
 .favorites {
   padding: 0 20px 0 20px;
+  margin-bottom: 40px;
 }
 @media (max-width: 768px) {
   .favorites {
@@ -555,7 +556,6 @@ table {
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 220px;
   grid-row-gap: 40px;
-  margin-bottom: 40px;
   right: 0px;
   transition: right 0.5s ease-in-out;
 }
@@ -580,6 +580,8 @@ table {
   text-align: center;
   letter-spacing: 0.1em;
   color: #000000;
+  width: 728px;
+  height: 200px;
 }
 .coffeeshop .menu {
   display: grid;
