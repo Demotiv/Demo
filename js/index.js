@@ -104,7 +104,7 @@ const books = document.querySelectorAll('.books-wrapper')
 radioBtn.forEach((radio, index) => {
   radio.addEventListener('click', () => {
     let rightValue = 0
-    let slidePos = 810
+    let slidePos = 1620
 
     books.forEach(book => {
       rightValue = index * slidePos

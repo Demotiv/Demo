@@ -658,9 +658,9 @@
                     <div class="card">
                         <form action="#" method="get" class="card__wrapper">
                             <h4>Brooklyn Public Library</h4>
-                            <input type="text" id="name" name="name" placeholder="Reader's name">
+                            <input type="text" id="name" name="name" pattern="[a-zA-Z ]+" placeholder="Reader's name">
                             <label for="name"></label>
-                            <input type="text" id="cardNumber" name="cardNumber" placeholder="Card number">
+                            <input type="text" id="cardNumber" name="cardNumber" pattern="[0-9]+" placeholder="Card number">
                             <label for="cardNumber"></label>
                         </form>
                         <button>Check the card</button>
