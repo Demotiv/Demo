@@ -362,6 +362,7 @@ button {
   }
   .header .hamburger .icon-profile {
     position: relative;
+    z-index: 3;
   }
   .header .hamburger .lines {
     display: flex;

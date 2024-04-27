@@ -8,6 +8,7 @@ const hamburgerLine = document.querySelectorAll('.line')
 const tabletMenu = document.querySelector('.tablet-menu')
 const navLinks = document.querySelectorAll('.link')
 
+
 hamburgerLines.addEventListener('click', () => {
   hamburgerLine.forEach((line, index) => {
     line.classList.toggle(`active-line-${index + 1}`)
@@ -32,10 +33,6 @@ const userIcon = document.querySelectorAll('.icon-profile')
 userIcon.forEach(icon => {
   icon.addEventListener('click', () => {
     dropDown.classList.toggle('active')
-    
-    if (dropDown.classList.contains('active')) {
-      icon.style.zIndex = '100'
-    }
   })
 })
 

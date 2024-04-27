@@ -132,7 +132,13 @@
 
             .icon-profile {
                 position: relative;
+                z-index: 3;
             }
+
+            // .icon-profile.active {
+            //     position: relative;
+            //     z-index: 3;
+            // }
 
             .lines {
                 display: flex;
