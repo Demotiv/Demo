@@ -144,27 +144,3 @@ radioBtn.forEach((radio, indexBtn) => {
     })
   })
 })
-
-//------------------------------//
-// Не пизди код, подумой сам!!
-// P.S. Код ниже теперь можешь пиздить
-
-// radioBtn.forEach((radio, index) => {
-//   radio.addEventListener('click', () => {
-//     let rightValue = 0
-//     let slidePos = 1620
-
-//     books.forEach(book => {
-
-//       rightValue = index * slidePos
-
-//       if (window.matchMedia("(max-width: 768px)").matches) {
-//         rightValue = index * (slidePos / 2)
-//       }
-
-//       book.style.right = rightValue + 'px'
-//     })
-//   }) 
-// })
-
-//------------------------------//
