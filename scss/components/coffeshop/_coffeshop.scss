@@ -4,7 +4,9 @@
     // test
     display: flex;
     flex-wrap: wrap;
-    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
     .title {
         margin-bottom: 40px;
