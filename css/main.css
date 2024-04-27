@@ -859,12 +859,11 @@ table {
   line-height: 133%;
   color: #FFFFFF;
 }
-.footer .footer-info .footer-contact .social-media {
+.footer .footer-info .footer-contact .social-media ul {
   display: flex;
-  flex-direction: row;
   gap: 15px;
 }
-.footer .footer-info .footer-contact .social-media img {
+.footer .footer-info .footer-contact .social-media ul img {
   width: 24px;
   height: 24px;
 }
