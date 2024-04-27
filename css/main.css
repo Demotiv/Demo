@@ -141,7 +141,6 @@ table {
   border: 1px solid #0C0C0E;
   border-radius: 2px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
 }
 .favorites .cards-container .books__body button:hover {
   border: solid #BB945F;
