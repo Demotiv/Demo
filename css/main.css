@@ -200,6 +200,48 @@ button {
   margin: 0;
 }
 
+.favorites .cards-container .books-wrapper:not(.fadeOut) {
+  animation: fadeIn 0.5s forwards;
+}
+.favorites .cards-container .books-wrapper.fadeOut {
+  animation: fadeOut 0.5s forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .contacts .info__staff, .contacts .info__phones, .contacts .info__title {
   font-family: "Inter", sans-serif;
   font-size: 20px;
@@ -545,35 +587,6 @@ button {
   .favorites .cards-container .books-wrapper {
     display: flex;
     flex-direction: column;
-  }
-}
-.favorites .cards-container .books-wrapper:not(.fadeOut) {
-  animation: fadeIn 0.5s forwards;
-}
-.favorites .cards-container .books-wrapper.fadeOut {
-  animation: fadeOut 0.5s forwards;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-    z-index: 1;
-  }
-}
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
