@@ -105,6 +105,11 @@
                     background-color: $white;
                     white-space: nowrap;
                     cursor: pointer;
+
+                    &:hover {
+                        border: 1px solid $sand;
+                        color: $sand;
+                    }
                 }
             }
         }

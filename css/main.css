@@ -153,7 +153,7 @@ button {
   cursor: pointer;
 }
 .favorites .cards-container .books__body button:hover {
-  border: solid #BB945F;
+  border: 1px solid #BB945F;
   color: #BB945F;
 }
 .favorites .cards-container .books__title h4 {
@@ -813,6 +813,10 @@ button {
   background-color: #FFFFFF;
   white-space: nowrap;
   cursor: pointer;
+}
+.library-card .cards-info .find-card .card button:hover {
+  border: 1px solid #BB945F;
+  color: #BB945F;
 }
 .library-card .cards-info .get-a-card {
   display: flex;
