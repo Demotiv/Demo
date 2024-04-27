@@ -566,6 +566,9 @@ table {
   }
 }
 
+.coffeeshop {
+  padding: 0px 20px 0px 20px;
+}
 .coffeeshop .title {
   margin-bottom: 40px;
 }

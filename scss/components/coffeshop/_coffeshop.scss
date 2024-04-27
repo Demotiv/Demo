@@ -1,20 +1,9 @@
 .coffeeshop {
-    // padding: 0px 20px 0px 20px;
-
-    // test
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: center;
-    // align-items: center;
-    // flex-direction: column;
+    padding: 0px 20px 0px 20px;
     
     .title {
         margin-bottom: 40px;
         @extend %title-block;
-
-        // test
-        // position: relative;
-        // left: 100px;
 
         h2 {
             @extend %title;
@@ -32,10 +21,6 @@
             text-align: center;
             letter-spacing: 0.1em;
             color: $black;
-
-            // test
-            // width: 728px;
-            // height: 200px;
         }
     }
 
