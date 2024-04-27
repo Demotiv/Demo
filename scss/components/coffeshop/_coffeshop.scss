@@ -12,6 +12,10 @@
         margin-bottom: 40px;
         @extend %title-block;
 
+        // test
+        position: relative;
+        left: 100px;
+
         h2 {
             @extend %title;
         }

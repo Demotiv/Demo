@@ -576,6 +576,8 @@ table {
 }
 .coffeeshop .title {
   margin-bottom: 40px;
+  position: relative;
+  left: 100px;
 }
 .coffeeshop .title p {
   margin-top: 32px;
