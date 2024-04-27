@@ -1,4 +1,5 @@
 .header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -20,7 +21,7 @@
         color: $white;
     }
 
-    .nav {
+    &__links {
         display: flex;
         align-items: center;
         gap: 40px;
@@ -41,14 +42,73 @@
                 }
             }
         }
+    }
 
-        div {
-            display: block; /* Проверить! */
+    &__icon-profile {
+        display: block;
+    }
+
+    .dropMenu {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80px;
+        height: 115px;
+        background-color: $white;
+        z-index: 2;
+
+        &__card {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
         }
+
+        &__card-link {
+            font-family: $inter;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 133%;
+            color: $black;
+        }
+
+        &__card-hr {
+            width: 40px;
+            margin: 0;
+            border: 1px solid $sand;
+        }
+
+        &__profile {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            & a {
+                font-family: $inter;
+                font-size: 15px;
+                line-height: 133%;
+                color: $black;
+            }
+        }
+
+        a {
+            cursor: pointer;
+
+            &:hover {
+                color: $sand;
+            }
+        }
+
     }
 
     @include tablet {
-        .nav {
+        &__links {
             display: none;
         }
 
@@ -61,16 +121,14 @@
 
             img {
                 position: relative;
-                z-index: 21;
+                z-index: 3;
             }
 
             .lines {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                z-index: 21;
-                
-                // test
+                z-index: 3;
                 width: 32px;
                 height: 32px;
 
@@ -80,34 +138,22 @@
                     border: 2px solid $white;
                     transform-box: fill-box;
 	                transform-origin: center;
-                    // transition: transform 0.5s ease-out, opacity 0.3s ease-out;
-
-                    // test
                     transition: transform 0.5s ease-out;
                 }
 
                 .active-line-1 {
                     transform: translateY(15px) rotate(-225deg);
-
-                    // test
                     position: relative;
                     right: 6.5px;
                 }
                   
                 .active-line-2 {
-                    // opacity: 0;
-
-                    // test
                     position: relative;
                     transform: translateX(100px) rotate(225deg);
-                    // opacity: 0;
-                    // right: 6.5px;
                 }
                   
                 .active-line-3 {
-                    transform: translateY(-12.9px) rotate(225deg);
-                    
-                    // test
+                    transform: translateY(-12.7px) rotate(225deg);
                     position: relative;
                     right: 6.5px;
                 }
@@ -115,10 +161,10 @@
         }
 
         .tablet-menu {
-            top: -100%;
+            top: -900%;
             position: absolute;
             left: 436px;
-            z-index: 20;
+            z-index: 2;
             width: 332px;
             height: 570px;
             display: flex;

@@ -17,7 +17,7 @@
 <body>
     <header class="header">
             <h1>Brooklyn Public Library</h1>
-        <div class="nav">
+        <div class="header__links">
             <nav>
                 <ul>
                     <li><a href="#about" class="link">About</a></li>
@@ -27,11 +27,20 @@
                     <li><a href="#librarycard" class="link">Library Card</a></li>
                 </ul>
             </nav>
-            <div>
+            <a href="#icon-profile" class="header__icon-profile">
                 <img src="./img/header/icon_profile.png" alt="icon_profile">
+            </a>
+        </div>
+        <div class="dropMenu">
+            <div class="dropMenu__card">
+                <a href="#card" class="dropMenu__card-link">Profile</a>
+                <hr class="dropMenu__card-hr">
+            </div>
+            <div class="dropMenu__profile">
+                <a href="#log-in">Log in</a>
+                <a href="#register">Register</a>
             </div>
         </div>
-
         <div class="hamburger">
             <div>
                 <img src="./img/header/icon_profile.png" alt="icon_profile">
@@ -42,7 +51,6 @@
                 <div class="line"></div>
             </div>
         </div>
-        
         <div class="tablet-menu">
             <nav>
                 <ul>
@@ -54,7 +62,6 @@
                 </ul>
             </nav>
         </div>
-
     </header>
     <main>
         <section class="welcome" id="welcome">
