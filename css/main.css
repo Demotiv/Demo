@@ -929,4 +929,7 @@ button {
   line-height: 200%;
   letter-spacing: 0.1em;
   color: #FFFFFF;
+}
+.footer .footer-rss a span:hover {
+  color: #BB945F;
 }/*# sourceMappingURL=main.css.map */
