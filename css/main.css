@@ -65,7 +65,7 @@ table {
 }
 
 .header, .welcome, .about,
-.favorites, .coffeshop,
+.favorites, .coffeeshop,
 .contacts, .library-card,
 .footer {
   max-width: 1440px;
