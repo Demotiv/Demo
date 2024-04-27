@@ -682,6 +682,13 @@ table {
   display: flex;
   flex-direction: column;
 }
+.contacts .info a {
+  text-decoration: none;
+  color: #000000;
+}
+.contacts .info a:hover {
+  color: #BB945F;
+}
 .contacts .info__title {
   font-weight: bold;
   margin-bottom: 40px;

@@ -35,6 +35,15 @@
             flex-direction: column;
         }
 
+        & a {
+            text-decoration: none;
+            color: $black;
+
+            &:hover {
+                color: $sand;
+            }
+        }
+
         &__title {
             @extend %contacts__info-style;
             font-weight: bold;
