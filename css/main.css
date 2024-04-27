@@ -540,12 +540,39 @@ button {
   grid-column-gap: 220px;
   grid-row-gap: 40px;
   right: 0px;
-  transition: right 0.5s ease-in-out;
 }
 @media (max-width: 768px) {
   .favorites .cards-container .books-wrapper {
     display: flex;
     flex-direction: column;
+  }
+}
+.favorites .cards-container .books-wrapper:not(.fadeOut) {
+  animation: fadeIn 0.5s forwards;
+}
+.favorites .cards-container .books-wrapper.fadeOut {
+  animation: fadeOut 0.5s forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

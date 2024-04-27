@@ -100,23 +100,60 @@ if (carouselSlide.length && carouselBtn.length && carouselTabletBtn.length) {
 const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
 const books = document.querySelectorAll('.books-wrapper')
 
-// Не пизди код, подумой сам!!
-radioBtn.forEach((radio, index) => {
+radioBtn.forEach((radio, indexBtn) => {
   radio.addEventListener('click', () => {
     let rightValue = 0
     let slidePos = 1620
 
-    books.forEach(book => {
+    books.forEach((book, indexBook) => {
+      book.classList.remove('fadeIn', 'fadeOut')
 
-      rightValue = index * slidePos
-
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        rightValue = index * (slidePos / 2)
+      if (indexBtn !== indexBook) {
+        book.classList.add('fadeOut')
+      } else {
+        book.classList.add('fadeIn')
       }
 
-      book.style.right = rightValue + 'px'
+      rightValue = indexBook * slidePos
+
+      switch (indexBook) {
+        case 0:
+          book.style.right = rightValue + 'px'
+          break
+        case 1:
+          book.style.right = rightValue + 'px'
+          break
+        case 2:
+          book.style.right = rightValue + 'px'
+          break
+        case 3:
+          book.style.right = rightValue + 'px'
+          break
+      }
     })
-  }) 
+  })
 })
+
+//------------------------------//
+// Не пизди код, подумой сам!!
+// P.S. Код ниже теперь можешь пиздить
+
+// radioBtn.forEach((radio, index) => {
+//   radio.addEventListener('click', () => {
+//     let rightValue = 0
+//     let slidePos = 1620
+
+//     books.forEach(book => {
+
+//       rightValue = index * slidePos
+
+//       if (window.matchMedia("(max-width: 768px)").matches) {
+//         rightValue = index * (slidePos / 2)
+//       }
+
+//       book.style.right = rightValue + 'px'
+//     })
+//   }) 
+// })
 
 //------------------------------//
