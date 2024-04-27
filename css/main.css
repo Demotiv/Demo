@@ -316,7 +316,7 @@ table {
     opacity: 0;
   }
   .header .hamburger .lines .active-line-3 {
-    transform: translateY(-13px) rotate(225deg);
+    transform: translateY(-12.5px) rotate(225deg);
   }
   .header .tablet-menu {
     top: -100%;
@@ -568,9 +568,6 @@ table {
 
 .coffeeshop {
   padding: 0px 20px 0px 20px;
-  position: relative;
-  top: 0px;
-  left: 0;
 }
 .coffeeshop .title {
   margin-bottom: 40px;
