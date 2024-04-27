@@ -517,8 +517,13 @@ button {
     flex-direction: column;
   }
 }
-.favorites .season {
-  margin-bottom: 40px;
+@media (max-width: 768px) {
+  .favorites .season {
+    position: sticky;
+    top: 0;
+    background-color: #FFFFFF;
+    z-index: 10;
+  }
 }
 .favorites .season h3 {
   font-family: "Inter", sans-serif;
@@ -531,6 +536,7 @@ button {
   display: flex;
   gap: 90px;
   margin-top: 45px;
+  margin-bottom: 40px;
 }
 .favorites .season .radio-container__element {
   display: flex;

@@ -19,7 +19,12 @@
     }
 
     .season {
-        margin-bottom: 40px;
+        @include tablet {
+            position: sticky;
+            top: 0;
+            background-color: $white;
+            z-index: 10;
+        }
 
         & h3 {
             font-family: $inter;
@@ -33,6 +38,7 @@
             display: flex;
             gap: 90px;
             margin-top: 45px;
+            margin-bottom: 40px;
 
             &__element {
                 display: flex;
