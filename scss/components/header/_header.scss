@@ -65,6 +65,10 @@
                 flex-direction: column;
                 gap: 10px;
                 z-index: 21;
+                
+                // test
+                width: 32px;
+                height: 32px;
 
                 .line {
                     width: 45px;
@@ -72,19 +76,36 @@
                     border: 2px solid $white;
                     transform-box: fill-box;
 	                transform-origin: center;
+                    // transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+
+                    // test
                     transition: transform 0.5s ease-out, opacity 0.3s ease-out;
                 }
 
                 .active-line-1 {
                     transform: translateY(15px) rotate(-225deg);
+
+                    // test
+                    position: relative;
+                    right: 6.5px;
                 }
                   
                 .active-line-2 {
-                    opacity: 0;
+                    // opacity: 0;
+
+                    // test
+                    position: relative;
+                    transform: translateX(100px) rotate(225deg);
+                    // opacity: 0;
+                    // right: 6.5px;
                 }
                   
                 .active-line-3 {
                     transform: translateY(-12.9px) rotate(225deg);
+                    
+                    // test
+                    position: relative;
+                    right: 6.5px;
                 }
             }
         }

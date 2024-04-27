@@ -300,6 +300,8 @@ table {
     flex-direction: column;
     gap: 10px;
     z-index: 21;
+    width: 32px;
+    height: 32px;
   }
   .header .hamburger .lines .line {
     width: 45px;
@@ -311,12 +313,17 @@ table {
   }
   .header .hamburger .lines .active-line-1 {
     transform: translateY(15px) rotate(-225deg);
+    position: relative;
+    right: 6.5px;
   }
   .header .hamburger .lines .active-line-2 {
-    opacity: 0;
+    position: relative;
+    transform: translateX(100px) rotate(225deg);
   }
   .header .hamburger .lines .active-line-3 {
     transform: translateY(-12.9px) rotate(225deg);
+    position: relative;
+    right: 6.5px;
   }
   .header .tablet-menu {
     top: -100%;
