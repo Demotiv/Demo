@@ -406,6 +406,7 @@ table {
 }
 .about .carousel {
   margin-top: 33px;
+  margin-bottom: 40px;
 }
 @media (max-width: 768px) {
   .about .carousel__inner {
@@ -470,7 +471,6 @@ table {
 .about .carousel__control button {
   width: 16px;
   height: 16px;
-  margin-bottom: 40px;
   background-color: #0C0C0E;
   border-radius: 50%;
   border: none;

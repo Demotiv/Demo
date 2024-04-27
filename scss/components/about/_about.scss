@@ -24,6 +24,7 @@
 
     .carousel {
         margin-top: 33px;
+        margin-bottom: 40px;
 
         &__inner {
             @include tablet {
@@ -89,7 +90,6 @@
             button {
                 width: 16px;
                 height: 16px;
-                margin-bottom: 40px;
                 background-color: $dark;
                 border-radius: 50%;
                 border: none;
