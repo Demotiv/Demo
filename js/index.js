@@ -107,9 +107,14 @@ radioBtn.forEach((radio, index) => {
     let slidePos = 1620
 
     books.forEach(book => {
+
       rightValue = index * slidePos
+
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        rightValue = index * (slidePos / 2)
+      }
+
       book.style.right = rightValue + 'px'
-      book.style.fontWeight = 'bold'
     })
   }) 
 })
