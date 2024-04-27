@@ -309,7 +309,7 @@ table {
     border: 2px solid #FFFFFF;
     transform-box: fill-box;
     transform-origin: center;
-    transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+    transition: transform 0.5s ease-out;
   }
   .header .hamburger .lines .active-line-1 {
     transform: translateY(15px) rotate(-225deg);
