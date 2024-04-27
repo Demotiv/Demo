@@ -568,6 +568,9 @@ table {
 
 .coffeeshop {
   padding: 0px 20px 0px 20px;
+  position: relative;
+  top: 0px;
+  left: 0;
 }
 .coffeeshop .title {
   margin-bottom: 40px;
