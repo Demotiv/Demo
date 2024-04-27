@@ -89,7 +89,6 @@
             grid-column-gap: 220px;
             grid-row-gap: 40px;
             right: 0px;
-            // transition: right 0.5s ease-in-out;
 
             @include tablet {
                 display: flex;
@@ -116,6 +115,7 @@
 
             100% {
                 opacity: 1;
+                z-index: 1;
             }
         }
 
