@@ -696,7 +696,6 @@ button {
   flex-direction: column;
 }
 .contacts .info a {
-  text-decoration: none;
   color: #000000;
 }
 .contacts .info a:hover {
