@@ -19,17 +19,19 @@
     div:last-child {
         position: absolute;
         z-index: 10;
-        align-content: center;
-        margin-top: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 600px;
         height: 220px;
-        color: $white;
+        margin-top: 220px;
         font-family: $forum;
         font-size: 40px;
         line-height: 125%;
         letter-spacing: 0.07em;
-        text-transform: uppercase;
+        color: $white;
         text-align: center;
+        text-transform: uppercase;
         background-color: $dark;
     }
 }

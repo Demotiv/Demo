@@ -369,17 +369,19 @@ table {
 .welcome div:last-child {
   position: absolute;
   z-index: 10;
-  align-content: center;
-  margin-top: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 600px;
   height: 220px;
-  color: #FFFFFF;
+  margin-top: 220px;
   font-family: "Forum", sans-serif;
   font-size: 40px;
   line-height: 125%;
   letter-spacing: 0.07em;
-  text-transform: uppercase;
+  color: #FFFFFF;
   text-align: center;
+  text-transform: uppercase;
   background-color: #0C0C0E;
 }
 
