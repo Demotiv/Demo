@@ -568,16 +568,9 @@ table {
 
 .coffeeshop {
   padding: 0px 20px 0px 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 .coffeeshop .title {
   margin-bottom: 40px;
-  position: relative;
-  left: 100px;
 }
 .coffeeshop .title p {
   margin-top: 32px;
@@ -587,8 +580,6 @@ table {
   text-align: center;
   letter-spacing: 0.1em;
   color: #000000;
-  width: 728px;
-  height: 200px;
 }
 .coffeeshop .menu {
   display: grid;

@@ -2,19 +2,19 @@
     padding: 0px 20px 0px 20px;
 
     // test
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    // align-items: center;
+    // flex-direction: column;
     
     .title {
         margin-bottom: 40px;
         @extend %title-block;
 
         // test
-        position: relative;
-        left: 100px;
+        // position: relative;
+        // left: 100px;
 
         h2 {
             @extend %title;
@@ -34,8 +34,8 @@
             color: $black;
 
             // test
-            width: 728px;
-            height: 200px;
+            // width: 728px;
+            // height: 200px;
         }
     }
 
