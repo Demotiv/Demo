@@ -118,29 +118,28 @@ radioBtn.forEach((radio, indexBtn) => {
 
       switch (indexBook) {
         case 0:
-          if (window.matchMedia("(max-width: 768px)").matches) {
-            rightValue = indexBook * (slidePos / 2)
-          }
+          tablet()
           book.style.right = rightValue + 'px'
           break
         case 1:
-          if (window.matchMedia("(max-width: 768px)").matches) {
-            rightValue = indexBook * (slidePos / 2)
-          }
+          tablet()
           book.style.right = rightValue + 'px'
           break
         case 2:
-          if (window.matchMedia("(max-width: 768px)").matches) {
-            rightValue = indexBook * (slidePos / 2)
-          }
+          tablet()
           book.style.right = rightValue + 'px'
           break
         case 3:
-          if (window.matchMedia("(max-width: 768px)").matches) {
-            rightValue = indexBook * (slidePos / 2)
-          }
+          tablet()
           book.style.right = rightValue + 'px'
           break
+      }
+
+      function tablet () {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+          rightValue = indexBook * (slidePos / 2)
+        }
+        return rightValue
       }
     })
   })
