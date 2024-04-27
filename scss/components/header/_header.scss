@@ -50,7 +50,7 @@
 
     .dropMenu {
         position: absolute;
-        top: 70px;
+        top: -200%;
         right: 20px;
         display: flex;
         flex-direction: column;
@@ -59,6 +59,7 @@
         height: 115px;
         background-color: $white;
         z-index: 2;
+        transition: all 0.3s ease-in-out;
 
         &__card {
             margin-top: 5px;
@@ -107,6 +108,11 @@
 
     }
 
+    .dropMenu.active {
+        top: 70px;
+        right: 20px; 
+    }
+
     @include tablet {
         &__links {
             display: none;
@@ -129,8 +135,10 @@
                 flex-direction: column;
                 gap: 10px;
                 z-index: 3;
-                width: 32px;
-                height: 32px;
+
+                // test
+                // width: 32px;
+                // height: 32px;
 
                 .line {
                     width: 45px;
@@ -142,7 +150,7 @@
                 }
 
                 .active-line-1 {
-                    transform: translateY(15px) rotate(-225deg);
+                    transform: translateY(12px) rotate(-225deg);
                     position: relative;
                     right: 6.5px;
                 }
@@ -153,11 +161,16 @@
                 }
                   
                 .active-line-3 {
-                    transform: translateY(-12.7px) rotate(225deg);
+                    transform: translateY(-12px) rotate(225deg);
                     position: relative;
                     right: 6.5px;
                 }
             }
+
+            // .lines.active {
+            //     width: 32px;
+            //     height: 32px; 
+            // }
         }
 
         .tablet-menu {

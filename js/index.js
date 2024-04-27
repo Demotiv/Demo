@@ -29,6 +29,15 @@ navLinks.forEach(el => {
     })
 })
 
+  //------------------------------//
+  // Drop-Down menu
+const dropDown = document.querySelector('.dropMenu')
+const userIcon = document.querySelector('.header__icon-profile')
+
+userIcon.addEventListener('click', () => {
+  dropDown.classList.toggle('active')
+})
+
 //------------------------------//
 // Section About
 
