@@ -3,39 +3,40 @@
 
 //Tablet menu
 
-const hamburger = document.querySelector('.hamburger')
 const hamburgerLines = document.querySelector('.lines')
 const hamburgerLine = document.querySelectorAll('.line')
 const tabletMenu = document.querySelector('.tablet-menu')
 const navLinks = document.querySelectorAll('.link')
 
-hamburger.addEventListener('click', ()=> {
-    hamburgerLine.forEach((el, index) => {
-        el.classList.toggle(`active-line-${index + 1}`)
-    })
-
-    hamburgerLines.classList.toggle('active')
+hamburgerLines.addEventListener('click', () => {
+  hamburgerLine.forEach((line, index) => {
+    line.classList.toggle(`active-line-${index + 1}`)
     tabletMenu.classList.toggle('active')
-})
 
-navLinks.forEach(el => {
-    el.addEventListener('click', () => {
-        hamburgerLine.forEach((el, index) => {
-            el.classList.remove(`active-line-${index + 1}`)
-        })
-
-        hamburgerLines.classList.remove('active')
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        line.classList.remove(`active-line-${index + 1}`)
         tabletMenu.classList.remove('active')
+      })
     })
+  })
 })
 
-  //------------------------------//
-  // Drop-Down menu
-const dropDown = document.querySelector('.dropMenu')
-const userIcon = document.querySelector('.header__icon-profile')
+//------------------------------//
+// Drop-Down menu
 
-userIcon.addEventListener('click', () => {
-  dropDown.classList.toggle('active')
+const dropDown = document.querySelector('.dropMenu')
+const userIcon = document.querySelectorAll('.icon-profile')
+// const hamburgenIcon = document.querySelector('.hamburger__icon-profile')
+
+userIcon.forEach(icon => {
+  icon.addEventListener('click', () => {
+    dropDown.classList.toggle('active')
+    
+    if (dropDown.classList.contains('active')) {
+      icon.style.zIndex = '100'
+    }
+  })
 })
 
 //------------------------------//

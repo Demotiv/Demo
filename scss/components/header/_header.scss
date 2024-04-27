@@ -44,9 +44,9 @@
         }
     }
 
-    &__icon-profile {
-        display: block;
-    }
+    // &__icon-profile {
+    //     display: block;
+    // }
 
     .dropMenu {
         position: absolute;
@@ -110,7 +110,12 @@
 
     .dropMenu.active {
         top: 70px;
-        right: 20px; 
+        right: 20px;
+
+        @include tablet {
+            // test
+            right: 100px;
+        }
     }
 
     @include tablet {
@@ -125,9 +130,8 @@
             gap: 40px;
             padding-right: 20px;
 
-            img {
+            .icon-profile {
                 position: relative;
-                z-index: 3;
             }
 
             .lines {
@@ -166,11 +170,6 @@
                     right: 6.5px;
                 }
             }
-
-            // .lines.active {
-            //     width: 32px;
-            //     height: 32px; 
-            // }
         }
 
         .tablet-menu {

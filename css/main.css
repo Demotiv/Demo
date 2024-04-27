@@ -289,9 +289,6 @@ button {
 .header__links ul a:hover {
   color: #BB945F;
 }
-.header__icon-profile {
-  display: block;
-}
 .header .dropMenu {
   position: absolute;
   top: -200%;
@@ -348,6 +345,11 @@ button {
   right: 20px;
 }
 @media (max-width: 768px) {
+  .header .dropMenu.active {
+    right: 100px;
+  }
+}
+@media (max-width: 768px) {
   .header__links {
     display: none;
   }
@@ -358,9 +360,8 @@ button {
     gap: 40px;
     padding-right: 20px;
   }
-  .header .hamburger img {
+  .header .hamburger .icon-profile {
     position: relative;
-    z-index: 3;
   }
   .header .hamburger .lines {
     display: flex;
