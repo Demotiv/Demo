@@ -352,6 +352,7 @@ table {
 
 .welcome {
   position: relative;
+  bottom: 1px;
   min-height: 600px;
   background-image: url("../img/welcome/welcome.png");
   background-position: center;
