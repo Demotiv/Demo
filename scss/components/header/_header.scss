@@ -35,6 +35,10 @@
                 line-height: 250%;
                 color: $white;
                 text-decoration: none;
+
+                &:hover {
+                    color: $sand;
+                }
             }
         }
 
@@ -136,6 +140,10 @@
                     color: $white;
                     text-decoration: none;
                     cursor: pointer;
+
+                    &:hover {
+                        color: $sand;
+                    }
                 }
             }
         }

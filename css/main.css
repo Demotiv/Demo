@@ -277,6 +277,9 @@ table {
   color: #FFFFFF;
   text-decoration: none;
 }
+.header .nav ul a:hover {
+  color: #BB945F;
+}
 .header .nav div {
   display: block; /* Проверить! */
 }
@@ -351,6 +354,9 @@ table {
     color: #FFFFFF;
     text-decoration: none;
     cursor: pointer;
+  }
+  .header .tablet-menu ul a:hover {
+    color: #BB945F;
   }
   .header .tablet-menu.active {
     top: 0;
