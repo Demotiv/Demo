@@ -1,5 +1,9 @@
 .coffeeshop {
     padding: 0px 20px 0px 20px;
+
+    // test
+    display: flex;
+    flex-direction: column;
     
     .title {
         margin-bottom: 40px;
@@ -21,7 +25,8 @@
             text-align: center;
             letter-spacing: 0.1em;
             color: $black;
-            
+
+            // test
             width: 728px;
             height: 200px;
         }

@@ -568,6 +568,8 @@ table {
 
 .coffeeshop {
   padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
 }
 .coffeeshop .title {
   margin-bottom: 40px;
