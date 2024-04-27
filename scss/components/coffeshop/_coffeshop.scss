@@ -3,7 +3,8 @@
 
     // test
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    // flex-direction: column;
     
     .title {
         margin-bottom: 40px;

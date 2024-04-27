@@ -569,7 +569,7 @@ table {
 .coffeeshop {
   padding: 0px 20px 0px 20px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 .coffeeshop .title {
   margin-bottom: 40px;
