@@ -48,7 +48,8 @@ document.addEventListener('click', event => {
   const hamburgerClick = event.target.closest('.hamburger')
   const tabletMenuClick = event.target.closest('.tablet-menu')
   const registerModalClick = event.target.closest('.register')
-  const modalBackDrop = event.target.closest('.modal-backdrop')
+  const modalBackDropClick = event.target.closest('.modal-backdrop')
+  const userIconClick = event.target.closest('.icon-profile')
 
   if (window.matchMedia("(max-width: 768px)").matches) {
     if (!hamburgerClick && !tabletMenuClick) {
@@ -60,9 +61,13 @@ document.addEventListener('click', event => {
     }
   }
 
-  if (!registerModalClick && modalBackDrop) {
+  if (!registerModalClick && modalBackDropClick) {
     registerModal.classList.remove('active')
     modalBackDrop.classList.remove('active')
+  }
+
+  if (!userIconClick) {
+    dropDown.classList.remove('active')
   }
 })
 
