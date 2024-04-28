@@ -8,28 +8,30 @@ const hamburgerLine = document.querySelectorAll('.line')
 const tabletMenu = document.querySelector('.tablet-menu')
 const navLinks = document.querySelectorAll('.link')
 
-hamburgerLines.addEventListener('click', () => {
+hamburgerLines.addEventListener('click', toogleTabletMenu)
+
+function toogleTabletMenu() {
   hamburgerLine.forEach((line, index) => {
     line.classList.toggle(`active-line-${index + 1}`)
-    tabletMenu.classList.toggle('active')
-    dropDown.classList.remove('active')
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        line.classList.remove(`active-line-${index + 1}`)
-        tabletMenu.classList.remove('active')
-      })
-    })
-
-    userIcon.forEach(icon => {
-      icon.addEventListener('click', () => {
-        line.classList.remove(`active-line-${index + 1}`)
-        tabletMenu.classList.remove('active')
-      })
-    })
   })
-})
+  tabletMenu.classList.toggle('active')
+  dropDown.classList.remove('active')
 
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeTabletMenu)
+  })
+
+  userIcon.forEach(icon => {
+    icon.addEventListener('click', closeTabletMenu)
+  })
+}
+
+function closeTabletMenu() {
+  hamburgerLine.forEach((line, index) => {
+    line.classList.remove(`active-line-${index + 1}`)
+  })
+  tabletMenu.classList.remove('active')
+}
 
 // Drop-Down menu
 
@@ -37,14 +39,18 @@ const dropDown = document.querySelector('.dropMenu')
 const userIcon = document.querySelectorAll('.icon-profile')
   
 userIcon.forEach(icon => {
-  icon.addEventListener('click', () => {
-    dropDown.classList.toggle('active')
-  })
+  icon.addEventListener('click', toggleDropDown)
 })
+
+function toggleDropDown() {
+  dropDown.classList.toggle('active')
+}
 
 // Remove classNames
 
-document.addEventListener('click', event => {
+document.addEventListener('click', outsideClick)
+
+function outsideClick(event) {
   const hamburgerClick = event.target.closest('.hamburger')
   const tabletMenuClick = event.target.closest('.tablet-menu')
   const registerModalClick = event.target.closest('.register')
@@ -52,92 +58,93 @@ document.addEventListener('click', event => {
   const modalBackDropClick = event.target.closest('.modal-backdrop')
   const userIconClick = event.target.closest('.icon-profile')
 
-
-  // Закрытие при клике на иную область
   if (window.matchMedia("(max-width: 768px)").matches) {
     if (!hamburgerClick && !tabletMenuClick) {
-      tabletMenu.classList.remove('active')
-      dropDown.classList.remove('active')
-      hamburgerLine.forEach((line, index) => {
-        line.classList.remove(`active-line-${index + 1}`)
-      })
+      closeTabletMenu()
+      closeDropDown()
     }
   }
 
-  // Закрытие register при клике на другую область
   if (!registerModalClick && modalBackDropClick) {
-    registerModal.classList.remove('active')
-    modalBackDrop.classList.remove('active')
+    closeRegisterModal()
   }
 
-  // Закрытие log in при клике на другую область
   if (!logInModalClick && modalBackDropClick) {
-    logInModal.classList.remove('active')
-    modalBackDrop.classList.remove('active')
+    closeLogInModal()
   }
 
-  // Закрытие dropDown при клике не по иконке
   if (!userIconClick) {
-    dropDown.classList.remove('active')
+    closeDropDown()
   }
-})
+}
+
+function closeDropDown() {
+  dropDown.classList.remove('active')
+}
 
 // Register
 
 const registerModal = document.querySelector('.register')
 const modalBackDrop = document.querySelector('.modal-backdrop')
+const registerLinks = document.querySelectorAll('a[href="#register"]')
+const registerLines = document.querySelectorAll('.register__lines-container')
 
-document.addEventListener('click', () => {
-  const registerLinks = document.querySelectorAll('a[href="#register"]')
-  const registerLines = document.querySelectorAll('.register__lines-container')
+function openRegisterModal() {
+  registerModal.classList.add('active')
+  modalBackDrop.classList.add('active')
+  dropDown.classList.remove('active')
+  logInModal.classList.remove('active')
+}
 
-  // Появление register
-  registerLinks.forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault()
-      registerModal.classList.add('active')
-      modalBackDrop.classList.add('active')
-      dropDown.classList.remove('active')
-      logInModal.classList.remove('active')
-    })
+registerLinks.forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault()
+    openRegisterModal()
   })
+})
 
-  // Закрытие на крестик
-  registerLines.forEach(line => {
-    line.addEventListener('click', () => {
-      registerModal.classList.remove('active')
-      modalBackDrop.classList.remove('active')
-    })
+function closeRegisterModal() {
+  registerModal.classList.remove('active')
+  modalBackDrop.classList.remove('active')
+}
+
+registerLines.forEach(line => {
+  line.addEventListener('click', () => {
+    closeRegisterModal()
   })
 })
 
 // Log in
 
 const logInModal = document.querySelector('.log-in')
+const logInLinks = document.querySelectorAll('a[href="#log-in"]')
+const logInLines = document.querySelectorAll('.log-in__lines-container')
 
-document.addEventListener('click', () => {
-  const logInLinks = document.querySelectorAll('a[href="#log-in"]')
-  const logInLines = document.querySelectorAll('.log-in__lines-container')
+function openLogInModal() {
+  logInModal.classList.add('active')
+  modalBackDrop.classList.add('active')
+  dropDown.classList.remove('active')
+  registerModal.classList.remove('active')
+}
 
-  // Появление log in
-  logInLinks.forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault()
-      logInModal.classList.add('active')
-      modalBackDrop.classList.add('active')
-      dropDown.classList.remove('active')
-      registerModal.classList.remove('active')
-    })
-  })
-
-  // Закрытие на крестик
-  logInLines.forEach(line => {
-    line.addEventListener('click', () => {
-      logInModal.classList.remove('active')
-      modalBackDrop.classList.remove('active')
-    })
+logInLinks.forEach(link => {
+  link.addEventListener('click', event => {
+  event.preventDefault()
+  openLogInModal()
   })
 })
+
+function closeLogInModal() {
+  logInModal.classList.remove('active')
+  modalBackDrop.classList.remove('active')
+}
+
+logInLines.forEach(line => {
+  line.addEventListener('click', () => {
+  closeLogInModal()
+  })
+})
+
 //------------------------------//
 // Local Storage
 
@@ -149,7 +156,7 @@ registerForm.addEventListener('submit', event => {
   localStorage.setItem('firstName', registerForm['first-name'].value)
   localStorage.setItem('lastName', registerForm['last-name'].value)
   localStorage.setItem('email', registerForm['e-mail'].value)
-    localStorage.setItem('password', registerForm['password'].value)
+  localStorage.setItem('password', registerForm['password'].value)
 })
 
 registerForm['first-name'].value = localStorage.getItem('firstName') || ''
@@ -271,3 +278,132 @@ radioBtn.forEach((radio, indexBtn) => {
     })
   })
 })
+
+//------------------------------//
+// Old Code
+
+
+// Hamburger
+/*
+hamburgerLines.addEventListener('click', () => {
+  hamburgerLine.forEach((line, index) => {
+    line.classList.toggle(`active-line-${index + 1}`)
+    tabletMenu.classList.toggle('active')
+    dropDown.classList.remove('active')
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        line.classList.remove(`active-line-${index + 1}`)
+        tabletMenu.classList.remove('active')
+      })
+    })
+
+    userIcon.forEach(icon => {
+      icon.addEventListener('click', () => {
+        line.classList.remove(`active-line-${index + 1}`)
+        tabletMenu.classList.remove('active')
+      })
+    })
+  })
+})
+*/
+
+// Outside Click
+/*
+document.addEventListener('click', event => {
+  const hamburgerClick = event.target.closest('.hamburger')
+  const tabletMenuClick = event.target.closest('.tablet-menu')
+  const registerModalClick = event.target.closest('.register')
+  const logInModalClick = event.target.closest('.log-in')
+  const modalBackDropClick = event.target.closest('.modal-backdrop')
+  const userIconClick = event.target.closest('.icon-profile')
+
+
+  // Закрытие при клике на иную область
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    if (!hamburgerClick && !tabletMenuClick) {
+      tabletMenu.classList.remove('active')
+      dropDown.classList.remove('active')
+      hamburgerLine.forEach((line, index) => {
+        line.classList.remove(`active-line-${index + 1}`)
+      })
+    }
+  }
+
+  // Закрытие register при клике на другую область
+  if (!registerModalClick && modalBackDropClick) {
+    registerModal.classList.remove('active')
+    modalBackDrop.classList.remove('active')
+  }
+
+  // Закрытие log in при клике на другую область
+  if (!logInModalClick && modalBackDropClick) {
+    logInModal.classList.remove('active')
+    modalBackDrop.classList.remove('active')
+  }
+
+  // Закрытие dropDown при клике не по иконке
+  if (!userIconClick) {
+    dropDown.classList.remove('active')
+  }
+})
+*/
+
+// Register
+/*
+const registerModal = document.querySelector('.register')
+const modalBackDrop = document.querySelector('.modal-backdrop')
+
+document.addEventListener('click', () => {
+  const registerLinks = document.querySelectorAll('a[href="#register"]')
+  const registerLines = document.querySelectorAll('.register__lines-container')
+
+  // Появление register
+  registerLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault()
+      registerModal.classList.add('active')
+      modalBackDrop.classList.add('active')
+      dropDown.classList.remove('active')
+      logInModal.classList.remove('active')
+    })
+  })
+
+  // Закрытие на крестик
+  registerLines.forEach(line => {
+    line.addEventListener('click', () => {
+      registerModal.classList.remove('active')
+      modalBackDrop.classList.remove('active')
+    })
+  })
+})
+*/
+
+// Login
+/*
+const logInModal = document.querySelector('.log-in')
+
+document.addEventListener('click', () => {
+  const logInLinks = document.querySelectorAll('a[href="#log-in"]')
+  const logInLines = document.querySelectorAll('.log-in__lines-container')
+
+  // Появление log in
+  logInLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault()
+      logInModal.classList.add('active')
+      modalBackDrop.classList.add('active')
+      dropDown.classList.remove('active')
+      registerModal.classList.remove('active')
+    })
+  })
+
+  // Закрытие на крестик
+  logInLines.forEach(line => {
+    line.addEventListener('click', () => {
+      logInModal.classList.remove('active')
+      modalBackDrop.classList.remove('active')
+    })
+  })
+})
+*/
