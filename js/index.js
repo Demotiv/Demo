@@ -47,6 +47,8 @@ userIcon.forEach(icon => {
 document.addEventListener('click', event => {
   const hamburgerClick = event.target.closest('.hamburger')
   const tabletMenuClick = event.target.closest('.tablet-menu')
+  const registerModalClick = event.target.closest('.register')
+  const modalBackDrop = event.target.closest('.modal-backdrop')
 
   if (window.matchMedia("(max-width: 768px)").matches) {
     if (!hamburgerClick && !tabletMenuClick) {
@@ -57,20 +59,36 @@ document.addEventListener('click', event => {
       })
     }
   }
+
+  if (!registerModalClick && modalBackDrop) {
+    registerModal.classList.remove('active')
+    modalBackDrop.classList.remove('active')
+  }
 })
 
 // Register
+const registerModal = document.querySelector('.register')
+const modalBackDrop = document.querySelector('.modal-backdrop')
 
 document.addEventListener('click', () => {
   const registerLinks = document.querySelectorAll('a[href="#register"]')
-  const registerModal = document.querySelector('.register')
-  const modelBackDrop = document.querySelector('.modal-backdrop')
+  // const registerModal = document.querySelector('.register')
+  // const modalBackDrop = document.querySelector('.modal-backdrop')
+  const registerLines = document.querySelectorAll('.register__lines-container')
 
   registerLinks.forEach(link => {
     link.addEventListener('click', event => {
       event.preventDefault()
-      registerModal.classList.toggle('active')
-      modelBackDrop.classList.toggle('active')
+      registerModal.classList.add('active')
+      modalBackDrop.classList.add('active')
+      dropDown.classList.remove('active')
+    })
+  })
+
+  registerLines.forEach(line => {
+    line.addEventListener('click', () => {
+      registerModal.classList.remove('active')
+      modalBackDrop.classList.remove('active')
     })
   })
 })

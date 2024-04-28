@@ -436,10 +436,10 @@ button {
   }
 }
 .header .modal-backdrop {
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
+  display: none;
 }
 .header .modal-backdrop.active {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -467,6 +467,7 @@ button {
   height: 15px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 .header .register__line {
   width: 21px;
