@@ -59,7 +59,21 @@ document.addEventListener('click', event => {
   }
 })
 
-  
+// Register
+
+document.addEventListener('click', () => {
+  const registerLinks = document.querySelectorAll('a[href="#register"]')
+  const registerModal = document.querySelector('.register')
+  const modelBackDrop = document.querySelector('.modal-backdrop')
+
+  registerLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault()
+      registerModal.classList.toggle('active')
+      modelBackDrop.classList.toggle('active')
+    })
+  })
+})
 
 //------------------------------//
 // Section About
