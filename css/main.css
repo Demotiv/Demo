@@ -1044,20 +1044,22 @@ button {
   flex-direction: row;
   gap: 20px;
 }
-.library-card .cards-info .get-a-card__buttons button {
+.library-card .cards-info .get-a-card__buttons a {
   width: 75px;
   height: 30px;
   font-family: "Inter", sans-serif;
   font-weight: bold;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-align: center;
+  align-content: center;
   color: #0C0C0E;
   border: 1px solid #0C0C0E;
   border-radius: 2px;
   background-color: #FFFFFF;
   cursor: pointer;
 }
-.library-card .cards-info .get-a-card__buttons button:hover {
+.library-card .cards-info .get-a-card__buttons a:hover {
   border: 1px solid #BB945F;
   color: #BB945F;
 }
