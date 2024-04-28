@@ -1,4 +1,6 @@
 //------------------------------//
+// Func
+//------------------------------//
 // Header
 
 //Tablet menu
@@ -8,21 +10,31 @@ const hamburgerLine = document.querySelectorAll('.line')
 const tabletMenu = document.querySelector('.tablet-menu')
 const navLinks = document.querySelectorAll('.link')
 
-
 hamburgerLines.addEventListener('click', () => {
   hamburgerLine.forEach((line, index) => {
     line.classList.toggle(`active-line-${index + 1}`)
     tabletMenu.classList.toggle('active')
+  })
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        line.classList.remove(`active-line-${index + 1}`)
-        tabletMenu.classList.remove('active')
-      })
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      line.classList.remove(`active-line-${index + 1}`)
+      tabletMenu.classList.remove('active')
     })
   })
 })
 
+document.addEventListener('click', event => {
+  const hamburgerClick = event.target.closest('.hamburger')
+  const tabletMenuClick = event.target.closest('.tablet-menu')
+
+  if (!hamburgerClick && !tabletMenuClick && tabletMenu.classList.contains('active')) {
+    tabletMenu.classList.remove('active')
+    hamburgerLine.forEach((line, index) => {
+      line.classList.remove(`active-line-${index + 1}`)
+    })
+  }
+})
 //------------------------------//
 // Drop-Down menu
 
