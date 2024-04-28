@@ -531,6 +531,10 @@ button {
   letter-spacing: 0.1em;
   text-align: center;
   color: #0C0C0E;
+  cursor: pointer;
+}
+.header .register__form button:hover {
+  color: #BB945F;
 }
 .header .register__wrapper {
   margin-top: 10px;
@@ -553,8 +557,117 @@ button {
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
   color: #000000;
+  cursor: pointer;
+}
+.header .register__wrapper a:hover {
+  color: #BB945F;
 }
 .header .register.active {
+  top: 50%;
+}
+.header .log-in {
+  position: fixed;
+  top: -500%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  padding: 20px 25px;
+  background-color: #FFFFFF;
+  transition: all 0.5s ease-in-out;
+}
+.header .log-in__lines-container {
+  position: relative;
+  top: -5px;
+  left: 193px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.header .log-in__line {
+  width: 21px;
+  border: 2px solid #0C0C0E;
+}
+.header .log-in__line.line-1 {
+  transform: translateY(6px) translateX(-2px) rotate(-45deg);
+}
+.header .log-in__line.line-2 {
+  transform: translateY(2px) translateX(-2px) rotate(45deg);
+}
+.header .log-in__container {
+  display: flex;
+  flex-direction: column;
+}
+.header .log-in__container h2 {
+  font-family: "Forum", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #000000;
+}
+.header .log-in__form {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 133%;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+.header .log-in__form input {
+  width: 200px;
+  height: 20px;
+  border: 1px solid #BB945F;
+}
+.header .log-in__form button {
+  margin-top: 10px;
+  width: 75px;
+  height: 30px;
+  border: 1px solid #BB945F;
+  border-radius: 2px;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: #0C0C0E;
+  cursor: pointer;
+}
+.header .log-in__form button:hover {
+  color: #BB945F;
+}
+.header .log-in__wrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.header .log-in__wrapper p {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  color: #000000;
+  text-shadow: 0 2px 3px 0 rgba(255, 255, 255, 0.16);
+}
+.header .log-in__wrapper a {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-decoration: underline;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  color: #000000;
+  cursor: pointer;
+}
+.header .log-in__wrapper a:hover {
+  color: #BB945F;
+}
+.header .log-in.active {
   top: 50%;
 }
 

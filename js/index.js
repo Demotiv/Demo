@@ -48,9 +48,12 @@ document.addEventListener('click', event => {
   const hamburgerClick = event.target.closest('.hamburger')
   const tabletMenuClick = event.target.closest('.tablet-menu')
   const registerModalClick = event.target.closest('.register')
+  const logInModalClick = event.target.closest('.log-in')
   const modalBackDropClick = event.target.closest('.modal-backdrop')
   const userIconClick = event.target.closest('.icon-profile')
 
+
+  // Закрытие при клике на иную область
   if (window.matchMedia("(max-width: 768px)").matches) {
     if (!hamburgerClick && !tabletMenuClick) {
       tabletMenu.classList.remove('active')
@@ -61,38 +64,76 @@ document.addEventListener('click', event => {
     }
   }
 
+  // Закрытие register при клике на другую область
   if (!registerModalClick && modalBackDropClick) {
     registerModal.classList.remove('active')
     modalBackDrop.classList.remove('active')
   }
 
+  // Закрытие log in при клике на другую область
+  if (!logInModalClick && modalBackDropClick) {
+    logInModal.classList.remove('active')
+    modalBackDrop.classList.remove('active')
+  }
+
+  // Закрытие dropDown при клике не по иконке
   if (!userIconClick) {
     dropDown.classList.remove('active')
   }
 })
 
 // Register
+
 const registerModal = document.querySelector('.register')
 const modalBackDrop = document.querySelector('.modal-backdrop')
 
 document.addEventListener('click', () => {
   const registerLinks = document.querySelectorAll('a[href="#register"]')
-  // const registerModal = document.querySelector('.register')
-  // const modalBackDrop = document.querySelector('.modal-backdrop')
   const registerLines = document.querySelectorAll('.register__lines-container')
 
+  // Появление register
   registerLinks.forEach(link => {
     link.addEventListener('click', event => {
       event.preventDefault()
       registerModal.classList.add('active')
       modalBackDrop.classList.add('active')
       dropDown.classList.remove('active')
+      logInModal.classList.remove('active')
     })
   })
 
+  // Закрытие на крестик
   registerLines.forEach(line => {
     line.addEventListener('click', () => {
       registerModal.classList.remove('active')
+      modalBackDrop.classList.remove('active')
+    })
+  })
+})
+
+// Log in
+
+const logInModal = document.querySelector('.log-in')
+
+document.addEventListener('click', () => {
+  const logInLinks = document.querySelectorAll('a[href="#log-in"]')
+  const logInLines = document.querySelectorAll('.log-in__lines-container')
+
+  // Появление log in
+  logInLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault()
+      logInModal.classList.add('active')
+      modalBackDrop.classList.add('active')
+      dropDown.classList.remove('active')
+      registerModal.classList.remove('active')
+    })
+  })
+
+  // Закрытие на крестик
+  logInLines.forEach(line => {
+    line.addEventListener('click', () => {
+      logInModal.classList.remove('active')
       modalBackDrop.classList.remove('active')
     })
   })

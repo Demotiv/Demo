@@ -1,3 +1,122 @@
+// Header
+
+%modal-window {
+    position: fixed;
+        top: -500%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 4;
+        padding: 20px 25px;
+        background-color: $white;
+        transition: all 0.5s ease-in-out;
+
+        &__lines-container {
+            position: relative;
+            top: -5px;
+            left: 193px;
+            width: 15px;
+            height: 15px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        &__line {
+            width: 21px;
+            border: 2px solid $dark;
+
+            &.line-1 {
+                transform: translateY(6px) translateX(-2px) rotate(-45deg);
+            }
+
+            &.line-2 {
+                transform: translateY(2px) translateX(-2px) rotate(45deg);
+            }
+        }
+
+        &__container {
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                font-family: $forum;
+                font-size: 20px;
+                line-height: 100%;
+                letter-spacing: 0.02em;
+                text-transform: uppercase;
+                text-align: center;
+                color: $black;
+            }
+        }
+
+        &__form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: $inter;
+            font-size: 15px;
+            line-height: 133%;
+            letter-spacing: 0.02em;
+            color: $black;
+
+            input {
+                width: 200px;
+                height: 20px;
+                border: 1px solid $sand;
+            }
+
+            button {
+                margin-top: 10px;
+                width: 75px;
+                height: 30px;
+                border: 1px solid $black;
+                border-radius: 2px;
+                font-family: $inter;
+                font-weight: bold;
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                text-align: center;
+                color: $dark;
+                cursor: pointer;
+
+                &:hover {
+                    color: $sand;
+                }
+            }
+        }
+
+        &__wrapper {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+            p {
+                font-family: $inter;
+                font-size: 10px;
+                color: $black;
+                text-shadow: 0 2px 3px 0 rgba(255, 255, 255, 0.16);
+            }
+
+            a {
+               font-family: $inter;
+               font-weight: bold;
+               font-size: 10px;
+               letter-spacing: 0.1em;
+               text-decoration: underline;
+               text-decoration-skip-ink: none;
+               color: $black;
+               cursor: pointer;
+
+                &:hover {
+                    color: $sand;
+                }
+            }
+        }
+}
+
+//------------------------------//
 // Title blocks
 %title-block {
     display: flex;
@@ -19,9 +138,6 @@
     border: 1px solid $dark;
     margin-top: 7px;
 }
-
-//------------------------------//
-// About block
 
 //------------------------------//
 // Favorites books
