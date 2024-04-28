@@ -30,6 +30,20 @@ hamburgerLines.addEventListener('click', () => {
   })
 })
 
+
+// Drop-Down menu
+
+const dropDown = document.querySelector('.dropMenu')
+const userIcon = document.querySelectorAll('.icon-profile')
+  
+userIcon.forEach(icon => {
+  icon.addEventListener('click', () => {
+    dropDown.classList.toggle('active')
+  })
+})
+
+// Remove classNames
+
 document.addEventListener('click', event => {
   const hamburgerClick = event.target.closest('.hamburger')
   const tabletMenuClick = event.target.closest('.tablet-menu')
@@ -42,17 +56,8 @@ document.addEventListener('click', event => {
     })
   }
 })
-//------------------------------//
-// Drop-Down menu
 
-const dropDown = document.querySelector('.dropMenu')
-const userIcon = document.querySelectorAll('.icon-profile')
-
-userIcon.forEach(icon => {
-  icon.addEventListener('click', () => {
-    dropDown.classList.toggle('active')
-  })
-})
+  
 
 //------------------------------//
 // Section About
