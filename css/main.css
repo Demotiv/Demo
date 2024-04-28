@@ -379,7 +379,7 @@ button {
     transition: transform 0.5s ease-out;
   }
   .header .hamburger .lines .active-line-1 {
-    transform: translateY(12px) rotate(-225deg);
+    transform: translateY(13px) translateX(5.5px) rotate(-225deg);
     position: relative;
     right: 6.5px;
   }
@@ -388,7 +388,7 @@ button {
     transform: translateX(100px) rotate(225deg);
   }
   .header .hamburger .lines .active-line-3 {
-    transform: translateY(-12px) rotate(225deg);
+    transform: translateY(-15px) translateX(5.5px) rotate(225deg);
     position: relative;
     right: 6.5px;
   }
