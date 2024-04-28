@@ -138,6 +138,24 @@ document.addEventListener('click', () => {
     })
   })
 })
+//------------------------------//
+// Local Storage
+
+const registerForm = document.querySelector('.register__form')
+
+registerForm.addEventListener('submit', event => {
+  event.preventDefault()
+
+  localStorage.setItem('firstName', registerForm['first-name'].value)
+  localStorage.setItem('lastName', registerForm['last-name'].value)
+  localStorage.setItem('email', registerForm['e-mail'].value)
+    localStorage.setItem('password', registerForm['password'].value)
+})
+
+registerForm['first-name'].value = localStorage.getItem('firstName') || ''
+registerForm['last-name'].value = localStorage.getItem('lastName') || ''
+registerForm['e-mail'].value = localStorage.getItem('email') || ''
+registerForm['password'].value = localStorage.getItem('password') || ''
 
 //------------------------------//
 // Section About
