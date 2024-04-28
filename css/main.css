@@ -257,12 +257,6 @@ button {
   padding: 20px;
   background: #0C0C0E;
 }
-.header .hamburger {
-  display: none;
-}
-.header .tablet-menu {
-  display: none;
-}
 .header h1 {
   font-family: "Forum", sans-serif;
   font-size: 30px;
@@ -288,6 +282,93 @@ button {
 }
 .header__links ul a:hover {
   color: #BB945F;
+}
+@media (max-width: 768px) {
+  .header__links {
+    display: none;
+  }
+}
+.header .hamburger {
+  display: none;
+}
+@media (max-width: 768px) {
+  .header .hamburger {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+    padding-right: 20px;
+  }
+  .header .hamburger .icon-profile {
+    position: relative;
+    z-index: 3;
+  }
+  .header .hamburger .lines {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 3;
+  }
+  .header .hamburger .lines .line {
+    width: 45px;
+    height: 0;
+    border: 2px solid #FFFFFF;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.5s ease-out;
+  }
+  .header .hamburger .lines .active-line-1 {
+    transform: translateY(10px) rotate(-225deg);
+    position: relative;
+    right: 6.5px;
+  }
+  .header .hamburger .lines .active-line-2 {
+    position: relative;
+    transform: translateX(100px) rotate(225deg);
+  }
+  .header .hamburger .lines .active-line-3 {
+    transform: translateY(-14.5px) rotate(225deg);
+    position: relative;
+    right: 6.5px;
+  }
+}
+.header .tablet-menu {
+  display: none;
+}
+@media (max-width: 768px) {
+  .header .tablet-menu {
+    top: -900%;
+    position: absolute;
+    left: 436px;
+    z-index: 2;
+    width: 332px;
+    height: 570px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000;
+    transition: all ease-in-out 0.5s;
+  }
+  .header .tablet-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .header .tablet-menu ul a {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    line-height: 250%;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .header .tablet-menu ul a:hover {
+    color: #BB945F;
+  }
+  .header .tablet-menu.active {
+    top: 0;
+  }
 }
 .header .dropMenu {
   position: absolute;
@@ -340,11 +421,6 @@ button {
 .header .dropMenu a:hover {
   color: #BB945F;
 }
-@media (max-width: 768px) {
-  .header .dropMenu {
-    right: 100px;
-  }
-}
 .header .dropMenu.active {
   top: 70px;
   right: 20px;
@@ -355,81 +431,12 @@ button {
   }
 }
 @media (max-width: 768px) {
-  .header__links {
-    display: none;
+  .header .dropMenu {
+    right: 100px;
   }
-  .header .hamburger {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 40px;
-    padding-right: 20px;
-  }
-  .header .hamburger .icon-profile {
-    position: relative;
-    z-index: 3;
-  }
-  .header .hamburger .lines {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 3;
-  }
-  .header .hamburger .lines .line {
-    width: 45px;
-    height: 0;
-    border: 2px solid #FFFFFF;
-    transform-box: fill-box;
-    transform-origin: center;
-    transition: transform 0.5s ease-out;
-  }
-  .header .hamburger .lines .active-line-1 {
-    transform: translateY(13px) translateX(5.5px) rotate(-225deg);
-    position: relative;
-    right: 6.5px;
-  }
-  .header .hamburger .lines .active-line-2 {
-    position: relative;
-    transform: translateX(100px) rotate(225deg);
-  }
-  .header .hamburger .lines .active-line-3 {
-    transform: translateY(-15px) translateX(5.5px) rotate(225deg);
-    position: relative;
-    right: 6.5px;
-  }
-  .header .tablet-menu {
-    top: -900%;
-    position: absolute;
-    left: 436px;
-    z-index: 2;
-    width: 332px;
-    height: 570px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000000;
-    transition: all ease-in-out 0.5s;
-  }
-  .header .tablet-menu ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-  .header .tablet-menu ul a {
-    font-family: "Inter", sans-serif;
-    font-size: 20px;
-    line-height: 250%;
-    color: #FFFFFF;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .header .tablet-menu ul a:hover {
-    color: #BB945F;
-  }
-  .header .tablet-menu.active {
-    top: 0;
-  }
+}
+.header .register {
+  display: none;
 }
 
 .welcome {

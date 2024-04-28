@@ -48,12 +48,14 @@ document.addEventListener('click', event => {
   const hamburgerClick = event.target.closest('.hamburger')
   const tabletMenuClick = event.target.closest('.tablet-menu')
 
-  if (!hamburgerClick && !tabletMenuClick) {
-    tabletMenu.classList.remove('active')
-    dropDown.classList.remove('active')
-    hamburgerLine.forEach((line, index) => {
-      line.classList.remove(`active-line-${index + 1}`)
-    })
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    if (!hamburgerClick && !tabletMenuClick) {
+      tabletMenu.classList.remove('active')
+      dropDown.classList.remove('active')
+      hamburgerLine.forEach((line, index) => {
+        line.classList.remove(`active-line-${index + 1}`)
+      })
+    }
   }
 })
 
