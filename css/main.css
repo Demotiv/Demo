@@ -436,10 +436,10 @@ button {
   }
 }
 .header .modal-backdrop {
-  display: none;
+  position: absolute;
 }
 .header .modal-backdrop.active {
-  display: block;
+  animation: fadeIn 0.5s forwards;
   position: fixed;
   top: 0;
   left: 0;
@@ -447,7 +447,18 @@ button {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 3;
-  opacity: 1;
+}
+@keyframes fadeIn {
+  0% {
+    top: -200%;
+    opacity: 0;
+  }
+  10% {
+    top: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .header .register {
   position: fixed;
