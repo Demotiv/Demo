@@ -58,7 +58,7 @@
         width: 80px;
         height: 115px;
         background-color: $white;
-        z-index: 2;
+        z-index: 3;
         transition: all 0.3s ease-in-out;
 
         &__card {
@@ -106,6 +106,12 @@
             }
         }
 
+    }
+
+    @include tablet {
+        .dropMenu {
+            right: 100px;
+        }
     }
 
     .dropMenu.active {

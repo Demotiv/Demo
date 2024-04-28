@@ -299,7 +299,7 @@ button {
   width: 80px;
   height: 115px;
   background-color: #FFFFFF;
-  z-index: 2;
+  z-index: 3;
   transition: all 0.3s ease-in-out;
 }
 .header .dropMenu__card {
@@ -339,6 +339,11 @@ button {
 }
 .header .dropMenu a:hover {
   color: #BB945F;
+}
+@media (max-width: 768px) {
+  .header .dropMenu {
+    right: 100px;
+  }
 }
 .header .dropMenu.active {
   top: 70px;

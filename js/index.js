@@ -14,12 +14,20 @@ hamburgerLines.addEventListener('click', () => {
   hamburgerLine.forEach((line, index) => {
     line.classList.toggle(`active-line-${index + 1}`)
     tabletMenu.classList.toggle('active')
-  })
+    dropDown.classList.remove('active')
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      line.classList.remove(`active-line-${index + 1}`)
-      tabletMenu.classList.remove('active')
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        line.classList.remove(`active-line-${index + 1}`)
+        tabletMenu.classList.remove('active')
+      })
+    })
+
+    userIcon.forEach(icon => {
+      icon.addEventListener('click', () => {
+        line.classList.remove(`active-line-${index + 1}`)
+        tabletMenu.classList.remove('active')
+      })
     })
   })
 })
