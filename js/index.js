@@ -94,7 +94,6 @@ if (carouselSlide.length && carouselBtn.length && carouselTabletBtn.length) {
     })
   })
 
-  //------------------------------//
   // Tablet
   
   carouselTabletBtn.forEach((btn, index) => {
