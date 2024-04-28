@@ -1,6 +1,4 @@
 //------------------------------//
-// Func
-//------------------------------//
 // Header
 
 //Tablet menu
@@ -36,8 +34,9 @@ document.addEventListener('click', event => {
   const hamburgerClick = event.target.closest('.hamburger')
   const tabletMenuClick = event.target.closest('.tablet-menu')
 
-  if (!hamburgerClick && !tabletMenuClick && tabletMenu.classList.contains('active')) {
+  if (!hamburgerClick && !tabletMenuClick) {
     tabletMenu.classList.remove('active')
+    dropDown.classList.remove('active')
     hamburgerLine.forEach((line, index) => {
       line.classList.remove(`active-line-${index + 1}`)
     })
@@ -48,7 +47,6 @@ document.addEventListener('click', event => {
 
 const dropDown = document.querySelector('.dropMenu')
 const userIcon = document.querySelectorAll('.icon-profile')
-// const hamburgenIcon = document.querySelector('.hamburger__icon-profile')
 
 userIcon.forEach(icon => {
   icon.addEventListener('click', () => {
