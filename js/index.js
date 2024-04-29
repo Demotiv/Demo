@@ -270,48 +270,51 @@ const books = document.querySelectorAll('.books-wrapper')
 
 radioBtn.forEach((radio, indexBtn) => {
   radio.addEventListener('click', () => {
-    let rightValue = 0
-    let slidePos = 1620
-
-    books.forEach((book, indexBook) => {
-      book.classList.remove('fadeIn', 'fadeOut')
-
-      if (indexBtn !== indexBook) {
-        book.classList.add('fadeOut')
-      } else {
-        book.classList.add('fadeIn')
-      }
-
-      rightValue = indexBook * slidePos
-
-      switch (indexBook) {
-        case 0:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-        case 1:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-        case 2:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-        case 3:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-      }
-
-      function tablet () {
-        if (window.matchMedia("(max-width: 768px)").matches) {
-          rightValue = indexBook * (slidePos / 2)
-        }
-        return rightValue
-      }
-    })
+    booksClasses(indexBtn)
   })
 })
+
+function booksClasses(indexBtn) {
+  books.forEach((book, indexBook) => {
+    book.classList.remove('fadeIn', 'fadeOut')
+
+    indexBtn !== indexBook ? book.classList.add('fadeOut') : book.classList.add('fadeIn')
+
+    booksPos(indexBook)
+  })
+}
+
+function booksPos(indexBook) {
+  let slidePos = 1620
+  let rightValue = indexBook * slidePos
+  let book = books[indexBook]
+
+  switch (indexBook) {
+    case 0:
+      tablet()
+      book.style.right = rightValue + 'px'
+      break
+    case 1:
+      tablet()
+      book.style.right = rightValue + 'px'
+      break
+    case 2:
+      tablet()
+      book.style.right = rightValue + 'px'
+      break
+    case 3:
+      tablet()
+      book.style.right = rightValue + 'px'
+      break
+  }
+
+  function tablet () {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      rightValue = indexBook * (slidePos / 2)
+    }
+    return rightValue
+  }
+}
 
 //------------------------------//
 // Old Code
@@ -599,3 +602,53 @@ function calc(indexTabletBtn, currentRightValue, tabletSlidePos) {
 }
 */
 //------------------------------//
+// Favorites
+/*
+const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
+const books = document.querySelectorAll('.books-wrapper')
+
+radioBtn.forEach((radio, indexBtn) => {
+  radio.addEventListener('click', () => {
+    let rightValue = 0
+    let slidePos = 1620
+
+    books.forEach((book, indexBook) => {
+      book.classList.remove('fadeIn', 'fadeOut')
+
+      if (indexBtn !== indexBook) {
+        book.classList.add('fadeOut')
+      } else {
+        book.classList.add('fadeIn')
+      }
+
+      rightValue = indexBook * slidePos
+
+      switch (indexBook) {
+        case 0:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+        case 1:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+        case 2:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+        case 3:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+      }
+
+      function tablet () {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+          rightValue = indexBook * (slidePos / 2)
+        }
+        return rightValue
+      }
+    })
+  })
+})
+*/
