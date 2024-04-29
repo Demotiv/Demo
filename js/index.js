@@ -247,6 +247,21 @@ function activeSlideBtn(indexTabletBtn, tabletSlidePos) {
   })
 }
 
+window.addEventListener('resize', () => {
+  let carouselBtnsArray = Array.from(carouselBtn)
+  let currentIndex = carouselBtnsArray.findIndex(btn => btn.classList.contains('selected'))
+
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    carousel(currentIndex, slidePos = 34, tabletSlidePos = 105.5)
+  } else {
+    if (currentIndex > 2) {
+      carousel(currentIndex - 2, slidePos = 34, tabletSlidePos = 105.5)
+    } else {
+      carousel(currentIndex, slidePos = 34, tabletSlidePos = 105.5)
+    }
+  }
+})
+
 //------------------------------//
 // Favorites block
 
