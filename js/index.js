@@ -150,6 +150,286 @@ logInLines.forEach(line => {
 
 const registerForm = document.querySelector('.register__form')
 
+function saveFormData() {
+  const formData = new FormData(registerForm)
+  const formValue = Object.fromEntries(formData.entries())
+
+  for (let key in formValue) {
+    localStorage.setItem(key, formValue[key])
+  }
+}
+
+function loadFormData() {
+  const formData = new FormData(registerForm)
+  const formValue = Object.fromEntries(formData.entries())
+
+  for (let key in formValue) {
+    const savedValue = localStorage.getItem(key)
+    if (savedValue) {
+      registerForm[key].value = savedValue
+    }
+  }
+}
+
+registerForm.addEventListener('submit', event => {
+  event.preventDefault()
+  saveFormData()
+})
+
+loadFormData()
+
+//------------------------------//
+// Section About
+
+// Carousel
+
+const carouselSlide = document.querySelectorAll('.carousel__slide')
+const carouselBtn = document.querySelectorAll('.carousel__btn')
+const carouselTabletBtn = document.querySelectorAll('.carousel__tablet-btn')
+
+carouselBtn.forEach((btn, index) => {
+  btn.addEventListener('click',() => carousel(index, 34, 105.5))
+})
+
+function carousel(index, slidePos, tabletSlidePos) {
+  carouselBtn.forEach(btn => {
+    btn.classList.remove('selected')
+  })
+
+  carouselBtn[index].classList.add('selected')
+
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    activeSlide(index, tabletSlidePos)
+  } else {
+    activeSlide(index, slidePos)
+  }
+}
+
+function activeSlide(index, slidePos, tabletSlidePos) {
+  carouselSlide.forEach((slide) => {
+    slide.style.right = (index * (slidePos || tabletSlidePos)) + '%'
+  })
+}
+
+// Tablet slide
+
+carouselTabletBtn.forEach((btn, indexTabletBtn) => {
+  btn.addEventListener('click', () => carouselSlideBtn(indexTabletBtn, 105.5))
+})
+
+
+function carouselSlideBtn(indexTabletBtn, tabletSlidePos) {
+  carouselBtn.forEach(btn => {
+    btn.classList.remove('selected')
+  })
+
+  activeSlideBtn(indexTabletBtn, tabletSlidePos)
+}
+
+function activeSlideBtn(indexTabletBtn, tabletSlidePos) {
+  carouselSlide.forEach(slide => {
+    let rightValue = 0
+    let currentRightValue = parseFloat(slide.style.right) || 0
+
+    switch (indexTabletBtn) {
+      case 0:
+        rightValue = currentRightValue - tabletSlidePos
+        break
+      case 1:
+        rightValue = currentRightValue + tabletSlidePos
+        break
+    }
+
+    rightValue = Math.max(0, Math.min(rightValue, (carouselSlide.length - 1) * tabletSlidePos))
+
+    slide.style.right = rightValue + '%'
+    carouselBtn[`${rightValue / tabletSlidePos}`].classList.add('selected')
+  })
+}
+
+//------------------------------//
+// Favorites block
+
+const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
+const books = document.querySelectorAll('.books-wrapper')
+
+radioBtn.forEach((radio, indexBtn) => {
+  radio.addEventListener('click', () => {
+    let rightValue = 0
+    let slidePos = 1620
+
+    books.forEach((book, indexBook) => {
+      book.classList.remove('fadeIn', 'fadeOut')
+
+      if (indexBtn !== indexBook) {
+        book.classList.add('fadeOut')
+      } else {
+        book.classList.add('fadeIn')
+      }
+
+      rightValue = indexBook * slidePos
+
+      switch (indexBook) {
+        case 0:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+        case 1:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+        case 2:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+        case 3:
+          tablet()
+          book.style.right = rightValue + 'px'
+          break
+      }
+
+      function tablet () {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+          rightValue = indexBook * (slidePos / 2)
+        }
+        return rightValue
+      }
+    })
+  })
+})
+
+//------------------------------//
+// Old Code
+//------------------------------//
+// Hamburger
+/*
+hamburgerLines.addEventListener('click', () => {
+  hamburgerLine.forEach((line, index) => {
+    line.classList.toggle(`active-line-${index + 1}`)
+    tabletMenu.classList.toggle('active')
+    dropDown.classList.remove('active')
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        line.classList.remove(`active-line-${index + 1}`)
+        tabletMenu.classList.remove('active')
+      })
+    })
+
+    userIcon.forEach(icon => {
+      icon.addEventListener('click', () => {
+        line.classList.remove(`active-line-${index + 1}`)
+        tabletMenu.classList.remove('active')
+      })
+    })
+  })
+})
+*/
+//------------------------------//
+// Outside Click
+/*
+document.addEventListener('click', event => {
+  const hamburgerClick = event.target.closest('.hamburger')
+  const tabletMenuClick = event.target.closest('.tablet-menu')
+  const registerModalClick = event.target.closest('.register')
+  const logInModalClick = event.target.closest('.log-in')
+  const modalBackDropClick = event.target.closest('.modal-backdrop')
+  const userIconClick = event.target.closest('.icon-profile')
+
+
+  // Закрытие при клике на иную область
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    if (!hamburgerClick && !tabletMenuClick) {
+      tabletMenu.classList.remove('active')
+      dropDown.classList.remove('active')
+      hamburgerLine.forEach((line, index) => {
+        line.classList.remove(`active-line-${index + 1}`)
+      })
+    }
+  }
+
+  // Закрытие register при клике на другую область
+  if (!registerModalClick && modalBackDropClick) {
+    registerModal.classList.remove('active')
+    modalBackDrop.classList.remove('active')
+  }
+
+  // Закрытие log in при клике на другую область
+  if (!logInModalClick && modalBackDropClick) {
+    logInModal.classList.remove('active')
+    modalBackDrop.classList.remove('active')
+  }
+
+  // Закрытие dropDown при клике не по иконке
+  if (!userIconClick) {
+    dropDown.classList.remove('active')
+  }
+})
+*/
+//------------------------------//
+// Register
+/*
+const registerModal = document.querySelector('.register')
+const modalBackDrop = document.querySelector('.modal-backdrop')
+
+document.addEventListener('click', () => {
+  const registerLinks = document.querySelectorAll('a[href="#register"]')
+  const registerLines = document.querySelectorAll('.register__lines-container')
+
+  // Появление register
+  registerLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault()
+      registerModal.classList.add('active')
+      modalBackDrop.classList.add('active')
+      dropDown.classList.remove('active')
+      logInModal.classList.remove('active')
+    })
+  })
+
+  // Закрытие на крестик
+  registerLines.forEach(line => {
+    line.addEventListener('click', () => {
+      registerModal.classList.remove('active')
+      modalBackDrop.classList.remove('active')
+    })
+  })
+})
+*/
+//------------------------------//
+// Login
+/*
+const logInModal = document.querySelector('.log-in')
+
+document.addEventListener('click', () => {
+  const logInLinks = document.querySelectorAll('a[href="#log-in"]')
+  const logInLines = document.querySelectorAll('.log-in__lines-container')
+
+  // Появление log in
+  logInLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault()
+      logInModal.classList.add('active')
+      modalBackDrop.classList.add('active')
+      dropDown.classList.remove('active')
+      registerModal.classList.remove('active')
+    })
+  })
+
+  // Закрытие на крестик
+  logInLines.forEach(line => {
+    line.addEventListener('click', () => {
+      logInModal.classList.remove('active')
+      modalBackDrop.classList.remove('active')
+    })
+  })
+})
+*/
+//------------------------------//
+// Local Storage
+/*
+const registerForm = document.querySelector('.register__form')
+
 registerForm.addEventListener('submit', event => {
   event.preventDefault()
 
@@ -163,12 +443,10 @@ registerForm['first-name'].value = localStorage.getItem('firstName') || ''
 registerForm['last-name'].value = localStorage.getItem('lastName') || ''
 registerForm['e-mail'].value = localStorage.getItem('email') || ''
 registerForm['password'].value = localStorage.getItem('password') || ''
-
+*/
 //------------------------------//
-// Section About
-
-// Carousel
-
+// Carusel
+/*
 const carouselSlide = document.querySelectorAll('.carousel__slide')
 const carouselBtn = document.querySelectorAll('.carousel__btn')
 const carouselTabletBtn = document.querySelectorAll('.carousel__tablet-btn')
@@ -227,183 +505,82 @@ if (carouselSlide.length && carouselBtn.length && carouselTabletBtn.length) {
     })
   })
 }
-
-//------------------------------//
-// Favorites block
-
-const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
-const books = document.querySelectorAll('.books-wrapper')
-
-radioBtn.forEach((radio, indexBtn) => {
-  radio.addEventListener('click', () => {
-    let rightValue = 0
-    let slidePos = 1620
-
-    books.forEach((book, indexBook) => {
-      book.classList.remove('fadeIn', 'fadeOut')
-
-      if (indexBtn !== indexBook) {
-        book.classList.add('fadeOut')
-      } else {
-        book.classList.add('fadeIn')
-      }
-
-      rightValue = indexBook * slidePos
-
-      switch (indexBook) {
-        case 0:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-        case 1:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-        case 2:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-        case 3:
-          tablet()
-          book.style.right = rightValue + 'px'
-          break
-      }
-
-      function tablet () {
-        if (window.matchMedia("(max-width: 768px)").matches) {
-          rightValue = indexBook * (slidePos / 2)
-        }
-        return rightValue
-      }
-    })
-  })
-})
-
-//------------------------------//
-// Old Code
-
-
-// Hamburger
-/*
-hamburgerLines.addEventListener('click', () => {
-  hamburgerLine.forEach((line, index) => {
-    line.classList.toggle(`active-line-${index + 1}`)
-    tabletMenu.classList.toggle('active')
-    dropDown.classList.remove('active')
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        line.classList.remove(`active-line-${index + 1}`)
-        tabletMenu.classList.remove('active')
-      })
-    })
-
-    userIcon.forEach(icon => {
-      icon.addEventListener('click', () => {
-        line.classList.remove(`active-line-${index + 1}`)
-        tabletMenu.classList.remove('active')
-      })
-    })
-  })
-})
 */
-
-// Outside Click
+//------------------------------//
+// Function Carusel()
 /*
-document.addEventListener('click', event => {
-  const hamburgerClick = event.target.closest('.hamburger')
-  const tabletMenuClick = event.target.closest('.tablet-menu')
-  const registerModalClick = event.target.closest('.register')
-  const logInModalClick = event.target.closest('.log-in')
-  const modalBackDropClick = event.target.closest('.modal-backdrop')
-  const userIconClick = event.target.closest('.icon-profile')
+function carousel() {
+  const slidePos = 34
+  const tabletSlidePos = 105.5
+  let selectedBtnIndex = null
 
+  function selectedBtn(btnArray, slideMove) {
+    btnArray.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        btnArray.forEach(btn => {
+          btn.classList.remove('selected')
+        })
 
-  // Закрытие при клике на иную область
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    if (!hamburgerClick && !tabletMenuClick) {
-      tabletMenu.classList.remove('active')
-      dropDown.classList.remove('active')
-      hamburgerLine.forEach((line, index) => {
-        line.classList.remove(`active-line-${index + 1}`)
+        selectedBtnIndex = index
+        btn.classList.add('selected')
+        activeSlide(selectedBtnIndex, slideMove)
       })
+    })
+  }
+
+  function activeSlide(indexBtn, slideMove) {
+    carouselSlide.forEach((slide) => {
+      slide.style.right = (indexBtn * slideMove) + '%'
+    })
+  }
+
+  function updateCarousel() {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      selectedBtn(carouselBtn, tabletSlidePos)
+    } else {
+      selectedBtn(carouselBtn, slidePos)
     }
   }
 
-  // Закрытие register при клике на другую область
-  if (!registerModalClick && modalBackDropClick) {
-    registerModal.classList.remove('active')
-    modalBackDrop.classList.remove('active')
-  }
+  updateCarousel()
 
-  // Закрытие log in при клике на другую область
-  if (!logInModalClick && modalBackDropClick) {
-    logInModal.classList.remove('active')
-    modalBackDrop.classList.remove('active')
-  }
+  window.addEventListener('resize', updateCarousel)
+}
 
-  // Закрытие dropDown при клике не по иконке
-  if (!userIconClick) {
-    dropDown.classList.remove('active')
-  }
-})
+carousel()
 */
-
-// Register
+//------------------------------//
 /*
-const registerModal = document.querySelector('.register')
-const modalBackDrop = document.querySelector('.modal-backdrop')
+function activeSlideBtn(indexTabletBtn, tabletSlidePos) {
+  carouselSlide.forEach((slide) => {
+    let currentRightValue = parseFloat(slide.style.right) || 0
+    // let rightValue = calc(indexTabletBtn, currentRightValue, tabletSlidePos)
+    let rightValue = 0
 
-document.addEventListener('click', () => {
-  const registerLinks = document.querySelectorAll('a[href="#register"]')
-  const registerLines = document.querySelectorAll('.register__lines-container')
+    let pos = (currentRightValue % tabletSlidePos)
 
-  // Появление register
-  registerLinks.forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault()
-      registerModal.classList.add('active')
-      modalBackDrop.classList.add('active')
-      dropDown.classList.remove('active')
-      logInModal.classList.remove('active')
-    })
+    if (indexTabletBtn == 0) {
+      rightValue = (pos * tabletSlidePos) - tabletSlidePos
+    } else {
+      rightValue = (pos * tabletSlidePos) + tabletSlidePos
+    }
+    
+    slide.style.right = rightValue + '%'
   })
-
-  // Закрытие на крестик
-  registerLines.forEach(line => {
-    line.addEventListener('click', () => {
-      registerModal.classList.remove('active')
-      modalBackDrop.classList.remove('active')
-    })
-  })
-})
+}
 */
-
-// Login
 /*
-const logInModal = document.querySelector('.log-in')
+function calc(indexTabletBtn, currentRightValue, tabletSlidePos) {
+  let result
+  let pos = (currentRightValue % tabletSlidePos)
 
-document.addEventListener('click', () => {
-  const logInLinks = document.querySelectorAll('a[href="#log-in"]')
-  const logInLines = document.querySelectorAll('.log-in__lines-container')
+  if (indexTabletBtn == 0) {
+    result = (pos * tabletSlidePos) - tabletSlidePos
+  } else {
+    result = (pos * tabletSlidePos) + tabletSlidePos
+  }
 
-  // Появление log in
-  logInLinks.forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault()
-      logInModal.classList.add('active')
-      modalBackDrop.classList.add('active')
-      dropDown.classList.remove('active')
-      registerModal.classList.remove('active')
-    })
-  })
-
-  // Закрытие на крестик
-  logInLines.forEach(line => {
-    line.addEventListener('click', () => {
-      logInModal.classList.remove('active')
-      modalBackDrop.classList.remove('active')
-    })
-  })
-})
+  return result
+}
 */
+//------------------------------//
