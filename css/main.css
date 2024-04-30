@@ -214,7 +214,6 @@ button {
   }
   100% {
     opacity: 1;
-    z-index: 1;
   }
 }
 @keyframes fadeOut {
@@ -881,6 +880,9 @@ button {
     display: flex;
     flex-direction: column;
   }
+}
+.favorites .cards-container .fadeIn {
+  z-index: 1;
 }
 
 .coffeeshop {

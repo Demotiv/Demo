@@ -102,6 +102,10 @@
             }
         }
 
+        .fadeIn {
+            z-index: 1;
+        }
+
         @extend %key-frames;
         @extend %books;
     }
