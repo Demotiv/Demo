@@ -178,6 +178,8 @@ registerForm.addEventListener('submit', event => {
 
 loadFormData()
 
+// localStorage.clear()
+
 //------------------------------//
 // Section About
 
