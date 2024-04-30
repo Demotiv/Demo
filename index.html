@@ -72,13 +72,13 @@
                 <h2>Register</h2>
                 <form action="#" method="get" class="register__form">
                     <label for="first-name">First name</label>
-                    <input type="text" name="first-name" id="first-name">
+                    <input type="text" name="first-name" id="first-name" pattern="[A-Za-z]+" required>
                     <label for="last-name">Last name</label>
-                    <input type="text" name="last-name" id="last-name">
+                    <input type="text" name="last-name" id="last-name" pattern="[A-Za-z]+" required>
                     <label for="e-mail-register">E-mail</label>
-                    <input type="text" name="e-mail" id="e-mail-register">
+                    <input type="email" name="e-mail" id="e-mail-register" required>
                     <label for="password-register">Password</label>
-                    <input type="text" name="password" id="password-register">
+                    <input type="password" name="password" id="password-register" pattern="[A-Za-z-]{8,}" required>
                     <button>Sing Up</button>
                 </form>
                 <div class="register__wrapper">
