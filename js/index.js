@@ -81,7 +81,7 @@ function outsideClick(event) {
 function closeDropDown() {
   dropDown.classList.remove('active')
 }
-
+//------------------------------//
 // Register
 
 const registerModal = document.querySelector('.register')
@@ -145,7 +145,7 @@ logInLines.forEach(line => {
   })
 })
 
-//------------------------------//
+
 // Local Storage
 
 const registerForm = document.querySelector('.register__form')
