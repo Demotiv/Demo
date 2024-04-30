@@ -94,7 +94,6 @@ function openRegisterModal() {
   modalBackDrop.classList.add('active')
   dropDown.classList.remove('active')
   logInModal.classList.remove('active')
-  season.style.zIndex = '2'
 }
 
 registerLinks.forEach(link => {
@@ -126,7 +125,6 @@ function openLogInModal() {
   modalBackDrop.classList.add('active')
   dropDown.classList.remove('active')
   registerModal.classList.remove('active')
-  season.style.zIndex = '2'
 }
 
 logInLinks.forEach(link => {
