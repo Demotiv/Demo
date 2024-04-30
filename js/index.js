@@ -94,6 +94,7 @@ function openRegisterModal() {
   modalBackDrop.classList.add('active')
   dropDown.classList.remove('active')
   logInModal.classList.remove('active')
+  season.style.zIndex = '2'
 }
 
 registerLinks.forEach(link => {
@@ -125,6 +126,7 @@ function openLogInModal() {
   modalBackDrop.classList.add('active')
   dropDown.classList.remove('active')
   registerModal.classList.remove('active')
+  season.style.zIndex = '2'
 }
 
 logInLinks.forEach(link => {
@@ -267,6 +269,8 @@ window.addEventListener('resize', () => {
 
 const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
 const books = document.querySelectorAll('.books-wrapper')
+
+const season = document.querySelector('.season')
 
 radioBtn.forEach((radio, indexBtn) => {
   radio.addEventListener('click', () => {
