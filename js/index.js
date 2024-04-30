@@ -114,6 +114,7 @@ registerLines.forEach(line => {
   })
 })
 
+//------------------------------//
 // Log in
 
 const logInModal = document.querySelector('.log-in')
@@ -154,8 +155,10 @@ function saveFormData() {
   const formData = new FormData(registerForm)
   const formValue = Object.fromEntries(formData.entries())
 
-  for (let key in formValue) {
-    localStorage.setItem(key, formValue[key])
+  if (registerForm.checkValidity()) {
+    for (let key in formValue) {
+      localStorage.setItem(key, formValue[key])
+    }
   }
 }
 
@@ -174,6 +177,7 @@ function loadFormData() {
 registerForm.addEventListener('submit', event => {
   event.preventDefault()
   saveFormData()
+  closeRegisterModal()
 })
 
 loadFormData()
