@@ -110,21 +110,9 @@ function outsideClick(event) {
     closeLogInModal()
   }
 
-  // if (dropDown.classList.contains('active')) {
-  //   if (!guestIconClick) {
-  //     closeDropDown()
-  //   } else if (!usericonClick) {
-  //     closeDropDown()
-  //   }
-  // }
-
-  // if (!guestIconClick) {
-  //   closeDropDown()
-  // }
-
-  // if (!usericonClick) {
-  //   closeDropDown()
-  // }
+  if (!guestIconClick && !usericonClick) {
+    closeDropDown()
+  }
 }
 
 //------------------------------//
