@@ -200,18 +200,24 @@
         }
 
         &__profile {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-
             & a {
                 font-family: $inter;
                 font-size: 15px;
                 line-height: 133%;
                 color: $black;
             }
+        }
+
+        &__guest, &__user {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        &__user {
+            display: none;
         }
 
         a {

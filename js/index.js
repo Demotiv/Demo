@@ -42,7 +42,9 @@ function closeTabletMenu() {
 
 const dropDown = document.querySelector('.dropMenu') // Drop Down menu
 const guestIcon = document.querySelectorAll('.guest-profile') // Иконка гостя
+const guestMenu = document.querySelector('.dropMenu__guest') // Меню гостя
 const userIcon = document.querySelectorAll('.user-profile') // Иконка пользователя
+const userMenu = document.querySelector('.dropMenu__user') // Меню пользователя
 
 // Авторизация пользователя
 function userIsIn() {
@@ -53,6 +55,8 @@ function userIsIn() {
   userIcon.forEach(icon => {
     icon.classList.add('active')
   })
+
+  guestMenu.style.display = 'none'
 }
 
 // Открытие/Закрытие Drop Down menu гостем
@@ -89,6 +93,7 @@ function outsideClick(event) {
   const logInModalClick = event.target.closest('.log-in')
   const modalBackDropClick = event.target.closest('.modal-backdrop')
   const guestIconClick = event.target.closest('.guest-profile')
+  const usericonClick = event.target.closest('.user-profile')
 
   if (window.matchMedia("(max-width: 768px)").matches) {
     if (!hamburgerClick && !tabletMenuClick) {
@@ -105,9 +110,21 @@ function outsideClick(event) {
     closeLogInModal()
   }
 
-  if (!guestIconClick) {
-    closeDropDown()
-  }
+  // if (dropDown.classList.contains('active')) {
+  //   if (!guestIconClick) {
+  //     closeDropDown()
+  //   } else if (!usericonClick) {
+  //     closeDropDown()
+  //   }
+  // }
+
+  // if (!guestIconClick) {
+  //   closeDropDown()
+  // }
+
+  // if (!usericonClick) {
+  //   closeDropDown()
+  // }
 }
 
 //------------------------------//
@@ -146,6 +163,7 @@ registerLines.forEach(line => {
 
 //------------------------------//
 // Log in
+//------------------------------//
 
 const logInModal = document.querySelector('.log-in')
 const logInLinks = document.querySelectorAll('a[href="#log-in"]')
@@ -176,8 +194,9 @@ logInLines.forEach(line => {
   })
 })
 
-
+//------------------------------//
 // Local Storage
+//------------------------------//
 
 const registerForm = document.querySelector('.register__form')
 const loginForm = document.querySelector('.log-in__form')
@@ -227,8 +246,9 @@ function checkLoginData() {
 
 //------------------------------//
 // Section About
-
+//------------------------------//
 // Carousel
+//------------------------------//
 
 const carouselSlide = document.querySelectorAll('.carousel__slide')
 const carouselBtn = document.querySelectorAll('.carousel__btn')
@@ -311,6 +331,7 @@ window.addEventListener('resize', () => {
 
 //------------------------------//
 // Favorites block
+//------------------------------//
 
 const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
 const books = document.querySelectorAll('.books-wrapper')
