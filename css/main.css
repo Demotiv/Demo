@@ -311,11 +311,34 @@ button {
     gap: 40px;
     padding-right: 20px;
   }
-  .header .hamburger .icon-profile {
+  .header .hamburger .guest-profile {
     position: relative;
     width: 28px;
     height: 28px;
     z-index: 3;
+  }
+  .header .hamburger .user-profile {
+    display: none;
+  }
+  .header .hamburger .user-profile.active {
+    position: relative;
+    display: block;
+    z-index: 3;
+  }
+  .header .hamburger .user-profile.active .user-profile__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+  }
+  .header .hamburger .user-profile.active .user-profile__wrapper .user-profile__name {
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    line-height: 133%;
+    color: #BB945F;
   }
   .header .hamburger .lines {
     display: flex;

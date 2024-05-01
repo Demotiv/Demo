@@ -19,11 +19,15 @@ function toogleTabletMenu() {
   dropDown.classList.remove('active') // Закрытие Drop Down menu
 
   navLinks.forEach(link => {
-    link.addEventListener('click', closeTabletMenu) // Закрытие Tablet menu
+    link.addEventListener('click', closeTabletMenu) // Закрытие Tablet menu по ссылке
   })
 
   guestIcon.forEach(icon => {
-    icon.addEventListener('click', closeTabletMenu) // Закрытие Tablet menu
+    icon.addEventListener('click', closeTabletMenu) // Закрытие Tablet menu гостем
+  })
+
+  userIcon.forEach(icon => {
+    icon.addEventListener('click', closeTabletMenu) // Закрытие Tablet menu пользователем
   })
 }
 
@@ -144,6 +148,8 @@ registerLines.forEach(line => {
 const logInModal = document.querySelector('.log-in')
 const logInLinks = document.querySelectorAll('a[href="#log-in"]')
 const logInLines = document.querySelectorAll('.log-in__lines-container')
+const logOut = document.querySelectorAll('a[href="#log-out"]')
+const userInitials = document.querySelector('.user-profile__name')
 
 function openLogInModal() {
   logInModal.classList.add('active')
@@ -181,7 +187,6 @@ registerForm.addEventListener('submit', event => {
   event.preventDefault()
   saveFormData()
   closeRegisterModal()
-  userIsIn()
 })
 
 function saveFormData() {
@@ -193,6 +198,11 @@ function saveFormData() {
       localStorage.setItem(key, formValue[key])
     }
   }
+
+  const firstName = localStorage.getItem('first-name')
+  const lastName = localStorage.getItem('last-name')
+
+  userIsIn(firstName, lastName)
 }
 
 loginForm.addEventListener('submit', event => {
@@ -211,15 +221,18 @@ function checkLoginData() {
   const savedPassword = localStorage.getItem('password')
 
   if (email === savedEmail && password === savedPassword) {
+    const firstName = localStorage.getItem('first-name')
+    const lastName = localStorage.getItem('last-name')
+
     closeLogInModal()
-    userIsIn()
+    userIsIn(firstName, lastName)
   } else {
-    alert('Пшёл вон!')
+    alert('Wrong login or password')
   }
 }
 
 // Авторизация пользователя
-function userIsIn() {
+function userIsIn(firstName, lastName) {
   guestIcon.forEach(icon => {
     icon.style.display = 'none'
   })
@@ -228,8 +241,31 @@ function userIsIn() {
     icon.classList.add('active')
   })
 
+  userInitials.innerHTML = `${firstName[0]}${lastName[0]}`
+
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
+}
+
+// Выход пользователя
+logOut.forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault()
+    userIsOut()
+  })
+})
+
+function userIsOut() {
+  userIcon.forEach(icon => {
+    icon.classList.remove('active')
+  })
+
+  guestIcon.forEach(icon => {
+    icon.style.display = 'block'
+  })
+
+  userMenu.style.display = 'none'
+  guestMenu.style.display = 'flex'
 }
 
 // localStorage.clear()

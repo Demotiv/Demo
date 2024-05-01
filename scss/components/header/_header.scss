@@ -80,11 +80,38 @@
             gap: 40px;
             padding-right: 20px;
 
-            .icon-profile {
+            .guest-profile {
                 position: relative;
                 width: 28px;
                 height: 28px;
                 z-index: 3;
+            }
+
+            .user-profile {
+                display: none;
+    
+                &.active {
+                    position: relative;
+                    display: block;
+                    z-index: 3;
+    
+                    .user-profile__wrapper {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 28px;
+                        height: 28px;
+                        background-color: $white;
+                        border-radius: 50%;
+    
+                        .user-profile__name {
+                            font-family: $inter;
+                            font-size: 15px;
+                            line-height: 133%;
+                            color: $sand;
+                        }
+                    }
+                }
             }
 
             .lines {
