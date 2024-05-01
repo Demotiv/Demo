@@ -1111,7 +1111,7 @@ button {
   height: 386px;
   border: 3px solid #BB945F;
 }
-.library-card .cards-info .find-card .card__wrapper {
+.library-card .cards-info .find-card .card__form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1121,7 +1121,7 @@ button {
   height: 272px;
   background-color: #BB945F;
 }
-.library-card .cards-info .find-card .card__wrapper h4 {
+.library-card .cards-info .find-card .card__form h4 {
   margin-top: 20px;
   font-family: "Forum", sans-serif;
   font-size: 30px;
@@ -1129,7 +1129,7 @@ button {
   letter-spacing: 0.02em;
   color: #000000;
 }
-.library-card .cards-info .find-card .card__wrapper input {
+.library-card .cards-info .find-card .card__form input {
   padding-left: 20px;
   width: 520px;
   height: 66px;
@@ -1141,7 +1141,7 @@ button {
   border-radius: 10px;
   border: none;
 }
-.library-card .cards-info .find-card .card__wrapper input:focus {
+.library-card .cards-info .find-card .card__form input:focus {
   outline: none;
 }
 .library-card .cards-info .find-card .card button {
@@ -1218,6 +1218,30 @@ button {
 .library-card .cards-info .get-a-card__buttons a:hover {
   border: 1px solid #BB945F;
   color: #BB945F;
+}
+.library-card .user-info {
+  display: none;
+  margin-top: 15px;
+  flex-direction: row;
+  gap: 35px;
+}
+.library-card .user-info h5, .library-card .user-info span {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  line-height: 200%;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: #000000;
+}
+.library-card .user-info img {
+  width: 20px;
+  height: 21px;
+}
+.library-card .user-info__visits, .library-card .user-info__bonuses, .library-card .user-info__books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
 }
 
 .footer {

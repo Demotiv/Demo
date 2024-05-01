@@ -727,14 +727,31 @@
                 <div class="find-card">
                     <h3>Find your Library card</h3>
                     <div class="card">
-                        <form action="#" method="get" class="card__wrapper">
+                        <form action="#" method="get" class="card__form" id="find-card-form">
                             <h4>Brooklyn Public Library</h4>
                             <input type="text" id="name" name="full-name" pattern="[a-zA-Z ]+" placeholder="Reader's name">
                             <label for="name"></label>
                             <input type="text" id="cardNumber" name="card-number" pattern="[a-zA-Z0-9]{1,9}" placeholder="Card number">
                             <label for="cardNumber"></label>
                         </form>
-                        <button>Check the card</button>
+                        <button form="find-card-form" class="find-card-btn">Check the card</button>
+                        <div class="user-info">
+                            <div class="user-info__visits">
+                                <h5>Visits</h5>
+                                <img src="./img/library-cards/Union.png" alt="user-icon">
+                                <span class="hit-counter"></span>
+                            </div>
+                            <div class="user-info__bonuses">
+                                <h5>Bonuses</h5>
+                                <img src="./img/library-cards/Star 1.png" alt="star">
+                                <span class="bonuses-counter"></span>
+                            </div>
+                            <div class="user-info__books">
+                                <h5>Books</h5>
+                                <img src="./img/library-cards/Rectangle 32.png" alt="book">
+                                <span class="books-counter"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="get-a-card">

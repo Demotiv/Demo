@@ -1,6 +1,6 @@
-//------------------------------//
+//------------------------------//---//------------------------------//
 //Tablet menu
-//------------------------------//
+//------------------------------//---//------------------------------//
 
 const hamburgerLines = document.querySelector('.lines') // Блок с линиями в hamburger
 const hamburgerLine = document.querySelectorAll('.line') // Линии в hamburger
@@ -40,9 +40,9 @@ function closeTabletMenu() {
   tabletMenu.classList.remove('active') // Закрытие Tablet menu
 }
 
-//------------------------------//
+//------------------------------//---//------------------------------//
 // Drop-Down menu
-//------------------------------//
+//------------------------------//---//------------------------------//
 
 const dropDown = document.querySelector('.dropMenu') // Drop Down menu
 const guestIcon = document.querySelectorAll('.guest-profile') // Иконка гостя
@@ -52,12 +52,12 @@ const userMenu = document.querySelector('.dropMenu__user') // Меню поль�
 
 // Открытие/Закрытие Drop Down menu гостем
 guestIcon.forEach(icon => {
-  icon.addEventListener('click', toggleDropDown) // Открытие/Закрытие Drop Down menu
+  icon.addEventListener('click', toggleDropDown)
 })
 
 // Открытие/Закрытие Drop Down menu пользователем
 userIcon.forEach(icon => {
-  icon.addEventListener('click', toggleDropDown) // Открытие/Закрытие Drop Down menu
+  icon.addEventListener('click', toggleDropDown)
 })
 
 // Открытие/Закрытие Drop Down menu
@@ -70,9 +70,9 @@ function closeDropDown() {
   dropDown.classList.remove('active')
 }
 
-//------------------------------//
+//------------------------------//---//------------------------------//
 // Remove classNames
-//------------------------------//
+//------------------------------//---//------------------------------//
 
 // Клик не по элементам
 document.addEventListener('click', outsideClick)
@@ -107,21 +107,14 @@ function outsideClick(event) {
   }
 }
 
-//------------------------------//
+//------------------------------//---//------------------------------//
 // Register
-//------------------------------//
+//------------------------------//---//------------------------------//
 
-const registerModal = document.querySelector('.register')
-const modalBackDrop = document.querySelector('.modal-backdrop')
-const registerLinks = document.querySelectorAll('a[href="#register"]')
-const registerLines = document.querySelectorAll('.register__lines-container')
-
-function openRegisterModal() {
-  registerModal.classList.add('active')
-  modalBackDrop.classList.add('active')
-  dropDown.classList.remove('active')
-  logInModal.classList.remove('active')
-}
+const registerModal = document.querySelector('.register') // Окно регистрации
+const modalBackDrop = document.querySelector('.modal-backdrop') // Фон затемнения
+const registerLinks = document.querySelectorAll('a[href="#register"]') // Ссылка на регистрацию
+const registerLines = document.querySelectorAll('.register__lines-container') // Закрытие меню регистрации
 
 registerLinks.forEach(link => {
   link.addEventListener('click', event => {
@@ -130,9 +123,12 @@ registerLinks.forEach(link => {
   })
 })
 
-function closeRegisterModal() {
-  registerModal.classList.remove('active')
-  modalBackDrop.classList.remove('active')
+// Открытие окна регистрации
+function openRegisterModal() {
+  registerModal.classList.add('active')
+  modalBackDrop.classList.add('active')
+  dropDown.classList.remove('active')
+  logInModal.classList.remove('active')
 }
 
 registerLines.forEach(line => {
@@ -141,22 +137,21 @@ registerLines.forEach(line => {
   })
 })
 
-//------------------------------//
+// Закрытие окна регистрации
+function closeRegisterModal() {
+  registerModal.classList.remove('active')
+  modalBackDrop.classList.remove('active')
+}
+
+//------------------------------//---//------------------------------//
 // Log in
-//------------------------------//
+//------------------------------//---//------------------------------//
 
 const logInModal = document.querySelector('.log-in')
 const logInLinks = document.querySelectorAll('a[href="#log-in"]')
 const logInLines = document.querySelectorAll('.log-in__lines-container')
 const logOut = document.querySelectorAll('a[href="#log-out"]')
 const userInitials = document.querySelectorAll('.user-profile__name')
-
-function openLogInModal() {
-  logInModal.classList.add('active')
-  modalBackDrop.classList.add('active')
-  dropDown.classList.remove('active')
-  registerModal.classList.remove('active')
-}
 
 logInLinks.forEach(link => {
   link.addEventListener('click', event => {
@@ -165,9 +160,12 @@ logInLinks.forEach(link => {
   })
 })
 
-function closeLogInModal() {
-  logInModal.classList.remove('active')
-  modalBackDrop.classList.remove('active')
+// Открытие окна Log In
+function openLogInModal() {
+  logInModal.classList.add('active')
+  modalBackDrop.classList.add('active')
+  dropDown.classList.remove('active')
+  registerModal.classList.remove('active')
 }
 
 logInLines.forEach(line => {
@@ -176,12 +174,18 @@ logInLines.forEach(line => {
   })
 })
 
-//------------------------------//
-// Local Storage
-//------------------------------//
+// Закрытие окна Log In
+function closeLogInModal() {
+  logInModal.classList.remove('active')
+  modalBackDrop.classList.remove('active')
+}
 
-const registerForm = document.querySelector('.register__form')
-const loginForm = document.querySelector('.log-in__form')
+//------------------------------//---//------------------------------//
+// Local Storage
+//------------------------------//---//------------------------------//
+
+const registerForm = document.querySelector('.register__form') // Форма регистрации
+const loginForm = document.querySelector('.log-in__form') // Форма Log In
 
 registerForm.addEventListener('submit', event => {
   event.preventDefault()
@@ -189,6 +193,7 @@ registerForm.addEventListener('submit', event => {
   closeRegisterModal()
 })
 
+// Сохранение данных при регистрации
 function saveFormData() {
   const formData = new FormData(registerForm)
   const formValue = Object.fromEntries(formData.entries())
@@ -198,21 +203,29 @@ function saveFormData() {
       localStorage.setItem(key, formValue[key])
     }
   }
+  
   const randomCardNumber = Math.floor(Math.random() * 0x1000000000).toString(16).padStart(9, '0').toUpperCase()
   localStorage.setItem('card-number', randomCardNumber)
 
+  const randomBonuses = Math.floor(1000 + Math.random() * 9000)
+  localStorage.setItem('bonuses', randomBonuses)
+
   const firstName = localStorage.getItem('first-name')
   const lastName = localStorage.getItem('last-name')
+
   localStorage.setItem('full-name', `${firstName} ${lastName}`)
 
   userIsIn(firstName, lastName)
 }
+
+//------------------------------//
 
 loginForm.addEventListener('submit', event => {
   event.preventDefault()
   checkLoginData()
 })
 
+// Проверка данных пользователя
 function checkLoginData() {
   const formData = new FormData(loginForm)
   const formValue = Object.fromEntries(formData.entries())
@@ -248,8 +261,14 @@ function userIsIn(firstName, lastName) {
     initials.innerHTML = `${firstName[0]}${lastName[0]}`
   })
 
+  let visited = parseInt(localStorage.getItem('visited')) || 0
+  visited++
+  localStorage.setItem('visited', visited)
+
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
+
+  showUserInfo()
 }
 
 // Выход пользователя
@@ -271,15 +290,64 @@ function userIsOut() {
 
   userMenu.style.display = 'none'
   guestMenu.style.display = 'flex'
+
+  hidenUserInfo()
 }
 
 // localStorage.clear()
+//------------------------------//---//------------------------------//
+// Library Card
+//------------------------------//---//------------------------------//
 
-//------------------------------//
+const cardForm = document.querySelector('.card__form') // Форма Library Cards
+const cardBtn = document.querySelector('.find-card-btn') // Library Cards Button
+const userInfo =document.querySelector('.user-info') // User Info
+const visitedCounter = document.querySelector('.hit-counter') // Счетчик посещений
+const bonusesCounter = document.querySelector('.bonuses-counter')
+
+cardForm.addEventListener('submit', event => {
+  event.preventDefault()
+  checkCardForm()
+})
+
+function checkCardForm() {
+  const formData = new FormData(cardForm)
+  const formValue = Object.fromEntries(formData.entries())
+
+  const fullName = formValue['full-name']
+  const cardNumber = formValue['card-number']
+
+  const savedFullName = localStorage.getItem('full-name')
+  const savedCardNumber = localStorage.getItem('card-number')
+
+  if (fullName === savedFullName && cardNumber === savedCardNumber) {
+    showUserInfo()
+
+    setTimeout(function() {
+      hidenUserInfo()
+    }, 10000)
+  }
+}
+
+// Появление информации пользователя
+function showUserInfo() {
+  cardBtn.style.display = 'none'
+  userInfo.style.display = 'flex'
+
+  visitedCounter.innerHTML = localStorage.getItem('visited')
+  bonusesCounter.innerHTML = localStorage.getItem('bonuses')
+}
+
+// Скрытие информации пользователя
+function hidenUserInfo() {
+  userInfo.style.display = 'none'
+  cardBtn.style.display = 'block'
+}
+
+//------------------------------//---//------------------------------//
 // Section About
-//------------------------------//
+//------------------------------//---//------------------------------//
 // Carousel
-//------------------------------//
 
 const carouselSlide = document.querySelectorAll('.carousel__slide')
 const carouselBtn = document.querySelectorAll('.carousel__btn')
@@ -360,9 +428,9 @@ window.addEventListener('resize', () => {
   }
 })
 
-//------------------------------//
+//------------------------------//---//------------------------------//
 // Favorites block
-//------------------------------//
+//------------------------------//---//------------------------------//
 
 const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
 const books = document.querySelectorAll('.books-wrapper')
@@ -417,4 +485,4 @@ function booksPos(indexBook) {
   }
 }
 
-//------------------------------//
+//------------------------------//---//------------------------------//
