@@ -58,7 +58,7 @@
             </a>
             <a href="#user-profile" class="user-profile">
                 <div class="user-profile__wrapper">
-                    <h2 class="user-profile__name">DC</h2>
+                    <h2 class="user-profile__name"></h2>
                 </div>
             </a>
             <div class="lines">
@@ -729,9 +729,9 @@
                     <div class="card">
                         <form action="#" method="get" class="card__wrapper">
                             <h4>Brooklyn Public Library</h4>
-                            <input type="text" id="name" name="name" pattern="[a-zA-Z ]+" placeholder="Reader's name">
+                            <input type="text" id="name" name="full-name" pattern="[a-zA-Z ]+" placeholder="Reader's name">
                             <label for="name"></label>
-                            <input type="text" id="cardNumber" name="cardNumber" pattern="[0-9]+" placeholder="Card number">
+                            <input type="text" id="cardNumber" name="card-number" pattern="[a-zA-Z0-9]{1,9}" placeholder="Card number">
                             <label for="cardNumber"></label>
                         </form>
                         <button>Check the card</button>

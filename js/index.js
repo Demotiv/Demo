@@ -149,7 +149,7 @@ const logInModal = document.querySelector('.log-in')
 const logInLinks = document.querySelectorAll('a[href="#log-in"]')
 const logInLines = document.querySelectorAll('.log-in__lines-container')
 const logOut = document.querySelectorAll('a[href="#log-out"]')
-const userInitials = document.querySelector('.user-profile__name')
+const userInitials = document.querySelectorAll('.user-profile__name')
 
 function openLogInModal() {
   logInModal.classList.add('active')
@@ -198,9 +198,12 @@ function saveFormData() {
       localStorage.setItem(key, formValue[key])
     }
   }
+  const randomCardNumber = Math.floor(Math.random() * 0x1000000000).toString(16).padStart(9, '0').toUpperCase()
+  localStorage.setItem('card-number', randomCardNumber)
 
   const firstName = localStorage.getItem('first-name')
   const lastName = localStorage.getItem('last-name')
+  localStorage.setItem('full-name', `${firstName} ${lastName}`)
 
   userIsIn(firstName, lastName)
 }
@@ -241,7 +244,9 @@ function userIsIn(firstName, lastName) {
     icon.classList.add('active')
   })
 
-  userInitials.innerHTML = `${firstName[0]}${lastName[0]}`
+  userInitials.forEach(initials => {
+    initials.innerHTML = `${firstName[0]}${lastName[0]}`
+  })
 
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
