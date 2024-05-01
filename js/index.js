@@ -45,6 +45,7 @@ function closeTabletMenu() {
 //------------------------------//---//------------------------------//
 
 const dropDown = document.querySelector('.dropMenu') // Drop Down menu
+const dropMenuCardNumber = document.querySelector('.dropMenu__card-profile') // Profile / Card Number
 const guestIcon = document.querySelectorAll('.guest-profile') // Иконка гостя
 const guestMenu = document.querySelector('.dropMenu__guest') // Меню гостя
 const userIcon = document.querySelectorAll('.user-profile') // Иконка пользователя
@@ -58,6 +59,13 @@ guestIcon.forEach(icon => {
 // Открытие/Закрытие Drop Down menu пользователем
 userIcon.forEach(icon => {
   icon.addEventListener('click', toggleDropDown)
+})
+
+// Информация при наведении курсора
+userIcon.forEach(icon => {
+  icon.addEventListener('mouseover', () => {
+    icon.setAttribute('title', localStorage.getItem('full-name'))
+  })
 })
 
 // Открытие/Закрытие Drop Down menu
@@ -265,6 +273,9 @@ function userIsIn(firstName, lastName) {
   visited++
   localStorage.setItem('visited', visited)
 
+  dropMenuCardNumber.innerHTML = localStorage.getItem('card-number')
+  dropMenuCardNumber.style.fontSize = '12px'
+
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
 
@@ -342,6 +353,7 @@ function showUserInfo() {
 function hidenUserInfo() {
   userInfo.style.display = 'none'
   cardBtn.style.display = 'block'
+  cardForm.reset()
 }
 
 //------------------------------//---//------------------------------//
@@ -434,8 +446,14 @@ window.addEventListener('resize', () => {
 
 const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
 const books = document.querySelectorAll('.books-wrapper')
+const booksBtn = document.querySelectorAll('.books__button')
 
-const season = document.querySelector('.season')
+booksBtn.forEach(book => {
+  book.addEventListener('click', event => {
+    event.preventDefault()
+    openLogInModal()
+  })
+})
 
 radioBtn.forEach((radio, indexBtn) => {
   radio.addEventListener('click', () => {

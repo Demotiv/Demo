@@ -38,7 +38,7 @@
         </div>
         <div class="dropMenu">
             <div class="dropMenu__card">
-                <a href="#card" class="dropMenu__card-link">Profile</a>
+                <h4 class="dropMenu__card-profile">Profile</h4>
                 <hr class="dropMenu__card-hr">
             </div>
             <div class="dropMenu__profile">
@@ -98,7 +98,7 @@
                     <input type="email" name="e-mail" id="e-mail-register" required>
 
                     <label for="password-register">Password</label>
-                    <input type="password" name="password" id="password-register" pattern="[A-Za-z-]{8,}" required>
+                    <input type="password" name="password" id="password-register" pattern="^[A-Za-z0-9]{8,}$" required>
 
                     <button>Sing Up</button>
                 </form>

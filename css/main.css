@@ -427,7 +427,7 @@ button {
   align-items: center;
   gap: 5px;
 }
-.header .dropMenu__card-link {
+.header .dropMenu__card-profile {
   font-family: "Inter", sans-serif;
   font-weight: bold;
   font-size: 15px;
