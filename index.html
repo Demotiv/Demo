@@ -27,8 +27,13 @@
                     <li><a href="#librarycard" class="link">Library Card</a></li>
                 </ul>
             </nav>
-            <a href="#icon-profile" class="header__icon-profile">
-                <img src="./img/header/icon_profile.png" class="icon-profile" alt="icon_profile">
+            <a href="#guest-profile" class="guest-profile">
+                <img src="./img/header/icon_profile.png" class="icon-profile-png" alt="icon_profile">
+            </a>
+            <a href="#user-profile" class="user-profile">
+                <div class="user-profile__wrapper">
+                    <h2 class="user-profile__name">DC</h2>
+                </div>
             </a>
         </div>
         <div class="dropMenu">
@@ -42,8 +47,8 @@
             </div>
         </div>
         <div class="hamburger">
-            <a href="#icon-profile" class="hamburger__icon-profile">
-                <img src="./img/header/icon_profile.png" class="icon-profile" alt="icon_profile">
+            <a href="#icon-profile" class="guest-profile">
+                <img src="./img/header/icon_profile.png" class="icon-profile-png" alt="icon_profile">
             </a>
             <div class="lines">
                 <div class="line"></div>
@@ -71,14 +76,19 @@
             <div class="register__container">
                 <h2>Register</h2>
                 <form action="#" method="get" class="register__form">
+
                     <label for="first-name">First name</label>
                     <input type="text" name="first-name" id="first-name" pattern="[A-Za-z]+" required>
+
                     <label for="last-name">Last name</label>
                     <input type="text" name="last-name" id="last-name" pattern="[A-Za-z]+" required>
+
                     <label for="e-mail-register">E-mail</label>
                     <input type="email" name="e-mail" id="e-mail-register" required>
+
                     <label for="password-register">Password</label>
                     <input type="password" name="password" id="password-register" pattern="[A-Za-z-]{8,}" required>
+
                     <button>Sing Up</button>
                 </form>
                 <div class="register__wrapper">
@@ -95,10 +105,13 @@
             <div class="log-in__container">
                 <h2>Login</h2>
                 <form action="#" method="get" class="log-in__form">
+
                     <label for="e-mail-log-in">E-mail or readers card</label>
-                    <input type="text" name="e-mail" id="e-mail-log-in">
+                    <input type="email" name="e-mail" id="e-mail-log-in" required>
+
                     <label for="password-log-in">Password</label>
-                    <input type="text" name="password" id="password-log-in">
+                    <input type="text" name="password" id="password-log-in" required>
+
                     <button>Log in</button>
                 </form>
                 <div class="log-in__wrapper">

@@ -270,6 +270,31 @@ button {
 .header__links ul a:hover {
   color: #BB945F;
 }
+.header__links .icon-profile {
+  width: 28px;
+  height: 28px;
+}
+.header__links .user-profile {
+  display: none;
+}
+.header__links .user-profile.active {
+  display: block;
+}
+.header__links .user-profile.active .user-profile__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+}
+.header__links .user-profile.active .user-profile__wrapper .user-profile__name {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 133%;
+  color: #BB945F;
+}
 @media (max-width: 768px) {
   .header__links {
     display: none;
@@ -288,6 +313,8 @@ button {
   }
   .header .hamburger .icon-profile {
     position: relative;
+    width: 28px;
+    height: 28px;
     z-index: 3;
   }
   .header .hamburger .lines {

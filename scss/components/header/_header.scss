@@ -35,6 +35,36 @@
             }
         }
 
+        .icon-profile {
+            width: 28px;
+            height: 28px;
+        }
+
+        .user-profile {
+            display: none;
+
+            &.active {
+                display: block;
+
+                .user-profile__wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 28px;
+                    height: 28px;
+                    background-color: $white;
+                    border-radius: 50%;
+
+                    .user-profile__name {
+                        font-family: $inter;
+                        font-size: 15px;
+                        line-height: 133%;
+                        color: $sand;
+                    }
+                }
+            }
+        }
+
         @include tablet {
             display: none;
         }
@@ -52,6 +82,8 @@
 
             .icon-profile {
                 position: relative;
+                width: 28px;
+                height: 28px;
                 z-index: 3;
             }
 
