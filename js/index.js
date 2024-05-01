@@ -46,19 +46,6 @@ const guestMenu = document.querySelector('.dropMenu__guest') // Меню гос�
 const userIcon = document.querySelectorAll('.user-profile') // Иконка пользователя
 const userMenu = document.querySelector('.dropMenu__user') // Меню пользователя
 
-// Авторизация пользователя
-function userIsIn() {
-  guestIcon.forEach(icon => {
-    icon.style.display = 'none'
-  })
-
-  userIcon.forEach(icon => {
-    icon.classList.add('active')
-  })
-
-  guestMenu.style.display = 'none'
-}
-
 // Открытие/Закрытие Drop Down menu гостем
 guestIcon.forEach(icon => {
   icon.addEventListener('click', toggleDropDown) // Открытие/Закрытие Drop Down menu
@@ -110,6 +97,7 @@ function outsideClick(event) {
     closeLogInModal()
   }
 
+  // Проверить!
   if (!guestIconClick && !usericonClick) {
     closeDropDown()
   }
@@ -228,6 +216,20 @@ function checkLoginData() {
   } else {
     alert('Пшёл вон!')
   }
+}
+
+// Авторизация пользователя
+function userIsIn() {
+  guestIcon.forEach(icon => {
+    icon.style.display = 'none'
+  })
+
+  userIcon.forEach(icon => {
+    icon.classList.add('active')
+  })
+
+  guestMenu.style.display = 'none'
+  userMenu.style.display = 'flex'
 }
 
 // localStorage.clear()

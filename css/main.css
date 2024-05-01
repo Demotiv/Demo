@@ -270,7 +270,7 @@ button {
 .header__links ul a:hover {
   color: #BB945F;
 }
-.header__links .icon-profile {
+.header__links a {
   width: 28px;
   height: 28px;
 }
