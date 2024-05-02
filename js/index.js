@@ -224,13 +224,16 @@ const myProfileCloseBtn = document.querySelector('.profile__close-btn')
 const myProfileVisits = document.querySelector('.hit-counter')
 const myProfileBonuses = document.querySelector('.bonuses-counter')
 const myProfileBooks = document.querySelector('.books-counter')
-const myProfileCardNumber =document.querySelector('.profile__card-number-user')
+const myProfileCardNumber = document.querySelector('.profile__card-number-user')
+const myProfileCopyCardNumber = document.querySelector('.profile__card-number-icon')
 
 myProfileLink.forEach(link => {
   link.addEventListener('click', openMyProfile)
 })
 
 myProfileCloseBtn.addEventListener('click', closeMyProfile)
+
+myProfileCopyCardNumber.addEventListener('click', copyCard)
 
 function openMyProfile() {
   myProfileModal.classList.add('active')
@@ -246,6 +249,12 @@ function closeMyProfile() {
   myProfileModal.classList.remove('active')
   modalBackDrop.classList.remove('active')
 }
+/*
+function copyCard() {
+  myProfileCardNumber.select()
+  document.execCommand('copy')
+}
+*/
 
 //------------------------------//---//------------------------------//
 // Local Storage
