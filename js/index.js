@@ -221,6 +221,10 @@ function closeLogInModal() {
 const myProfileModal = document.querySelector('.profile')
 const myProfileCloseBtn = document.querySelector('.profile__close-btn')
 
+const myProfileVisits = document.querySelector('.hit-counter')
+const myProfileBonuses = document.querySelector('.bonuses-counter')
+const myProfileCardNumber =document.querySelector('.profile__card-number-user')
+
 myProfileLink.forEach(link => {
   link.addEventListener('click', openMyProfile)
 })
@@ -230,6 +234,10 @@ myProfileCloseBtn.addEventListener('click', closeMyProfile)
 function openMyProfile() {
   myProfileModal.classList.add('active')
   modalBackDrop.classList.add('active')
+
+  myProfileVisits.innerHTML = localStorage.getItem('visited')
+  myProfileBonuses.innerHTML = localStorage.getItem('bonuses')
+  myProfileCardNumber.innerHTML = localStorage.getItem('card-number')
 }
 
 function closeMyProfile() {
@@ -362,8 +370,8 @@ function userIsOut() {
 const cardForm = document.querySelector('.card__form') // Форма Library Cards
 const cardBtn = document.querySelector('.find-card-btn') // Library Cards Button
 const userInfo =document.querySelector('.user-info') // User Info
-const visitedCounter = document.querySelector('.hit-counter') // Счетчик посещений
-const bonusesCounter = document.querySelector('.bonuses-counter')
+const visitedCounter = document.querySelector('.library-hit-counter') // Счетчик посещений
+const bonusesCounter = document.querySelector('.library-bonuses-counter')
 
 cardForm.addEventListener('submit', event => {
   event.preventDefault()
