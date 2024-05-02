@@ -558,6 +558,14 @@ function booksNotOwn(targetBtn) {
   // Удаление названия и автора
   const title = targetBtn.closest('.books__body').querySelector('h4').textContent
   const author = targetBtn.closest('.books__body').querySelector('p').textContent
+
+  const booksList = document.querySelector('.profile__books-list')
+  const liElements = booksList.querySelectorAll('li')
+  liElements.forEach(li => {
+    if (li.textContent === `${title}, ${author}`) {
+      li.remove()
+    }
+  })
 }
 
 // Выбор сезонов
