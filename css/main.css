@@ -82,6 +82,23 @@ button {
   margin: 0 auto;
 }
 
+.header .profile__counter--visits, .header .profile__counter--bonuses, .header .profile__counter--books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: #000000;
+}
+.header .profile__counter--visits span, .header .profile__counter--bonuses span, .header .profile__counter--books span {
+  font-size: 10px;
+  line-height: 200%;
+}
+
 .library-card .title, .contacts .title, .coffeeshop .title, .favorites .title, .about .title {
   display: flex;
   flex-direction: column;
@@ -710,30 +727,32 @@ button {
 .header .log-in.active {
   top: 50%;
 }
-.header .my-profile {
+.header .profile {
   position: fixed;
-  top: 30%;
+  top: -500%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 4;
   display: flex;
   flex-direction: row;
-  padding: 20px 25px;
   transition: all 0.5s ease-in-out;
 }
-.header .my-profile__wrapper {
+.header .profile__wrapper {
+  display: flex;
+  align-items: center;
   font-family: "Inter", sans-serif;
   font-size: 20px;
   line-height: 100%;
   background-color: #000000;
 }
-.header .my-profile__title {
+.header .profile__title {
   display: flex;
   flex-direction: column;
   gap: 15px;
   background-color: #000000;
+  padding: 0px 25px 0px 25px;
 }
-.header .my-profile__user-initials {
+.header .profile__user-initials {
   margin: 0px 20px 0px 20px;
   display: flex;
   align-items: center;
@@ -744,12 +763,74 @@ button {
   color: #BB945F;
   background-color: #FFFFFF;
 }
-.header .my-profile__user-name {
+.header .profile__user-name {
   display: flex;
   justify-content: center;
   color: #000000;
   background-color: #FFFFFF;
   text-transform: capitalize;
+}
+.header .profile__info {
+  padding: 40px 0px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: #FFFFFF;
+}
+.header .profile__section-title {
+  font-family: "Forum", sans-serif;
+  font-size: 40px;
+  line-height: 50%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+.header .profile__counters {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.header .profile__rented-books {
+  margin-right: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 350px;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  line-height: 80%;
+  color: #0C0C0E;
+}
+.header .profile__books {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+  color: #000000;
+}
+.header .profile__card-number {
+  margin-bottom: 39px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+}
+.header .profile__card-number-title {
+  color: #0C0C0E;
+}
+.header .profile__card-number-user {
+  color: #BB945F;
+}
+.header .profile__card-number-icon {
+  width: 13px;
+  height: 12px;
+}
+.header .profile.active {
+  top: 50%;
 }
 
 .welcome {

@@ -50,6 +50,7 @@ const guestIcon = document.querySelectorAll('.guest-profile') // Иконка г
 const guestMenu = document.querySelector('.dropMenu__guest') // Меню гостя
 const userIcon = document.querySelectorAll('.user-profile') // Иконка пользователя
 const userMenu = document.querySelector('.dropMenu__user') // Меню пользователя
+const myProfileLink = document.querySelectorAll('a[href="#my-profile"]')
 
 // Открытие/Закрытие Drop Down menu гостем
 guestIcon.forEach(icon => {
@@ -93,6 +94,7 @@ function outsideClick(event) {
   const modalBackDropClick = event.target.closest('.modal-backdrop')
   const guestIconClick = event.target.closest('.guest-profile')
   const usericonClick = event.target.closest('.user-profile')
+  const myProfileClick = event.target.closest('.profile')
 
   if (window.matchMedia("(max-width: 768px)").matches) {
     if (!hamburgerClick && !tabletMenuClick) {
@@ -113,6 +115,10 @@ function outsideClick(event) {
   if (!guestIconClick && !usericonClick) {
     closeDropDown()
   }
+
+  // if (myProfileModal.classList.contains('active') && !myProfileClick) {
+  //   closeMyProfile()
+  // }
 }
 
 //------------------------------//---//------------------------------//
@@ -185,6 +191,26 @@ logInLines.forEach(line => {
 // Закрытие окна Log In
 function closeLogInModal() {
   logInModal.classList.remove('active')
+  modalBackDrop.classList.remove('active')
+}
+
+//------------------------------//---//------------------------------//
+// My Profile
+//------------------------------//---//------------------------------//
+
+const myProfileModal = document.querySelector('.profile')
+
+myProfileLink.forEach(link => {
+  link.addEventListener('click', openMyProfile)
+})
+
+function openMyProfile() {
+  myProfileModal.classList.add('active')
+  modalBackDrop.classList.add('active')
+}
+
+function closeMyProfile() {
+  myProfileModal.classList.remove('active')
   modalBackDrop.classList.remove('active')
 }
 

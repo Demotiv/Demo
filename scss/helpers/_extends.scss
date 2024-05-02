@@ -116,6 +116,25 @@
         }
 }
 
+%my-profile-couners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-family: $inter;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    // text-align: center;
+    color: $black;
+
+    span {
+        font-size: 10px;
+        line-height: 200%;
+    }
+}
+
 //------------------------------//
 // Title blocks
 %title-block {
@@ -294,60 +313,6 @@
     }
 }
 
-// %key-frames {
-//     .books-wrapper:not(.fadeOut) {
-//         animation: fadeIn 0.5s forwards;
-//     }
-
-//     .books-wrapper.fadeOut {
-//         animation: fadeOut 0.5s forwards;
-//     }
-
-//     @keyframes fadeIn {
-//         0% {
-//             opacity: 0;
-//         }
-
-//         25% {
-//             opacity: 0.25;
-//         }
-
-//         50% {
-//             opacity: 0.5;
-//         }
-
-//         70% {
-//             opacity: 0.75;
-//         }
-
-//         100% {
-//             opacity: 1;
-//             z-index: 1;
-//         }
-//     }
-
-//     @keyframes fadeOut {
-//         0% {
-//             opacity: 1;
-//         }
-
-//         25% {
-//             opacity: 0.25;
-//         }
-
-//         50% {
-//             opacity: 0.5;
-//         }
-
-//         70% {
-//             opacity: 0.75;
-//         }
-
-//         100% {
-//             opacity: 0;
-//         }
-//     }
-// }
 //------------------------------//
 // Contacts block
 

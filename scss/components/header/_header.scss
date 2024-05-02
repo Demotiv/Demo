@@ -539,23 +539,25 @@
         top: 50%;
     }
 
-    .my-profile {
+    .profile {
         position: fixed;
-        top: 30%; // -500%
+        top: -500%; // -500%
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 4;
         display: flex;
         flex-direction: row;
-        padding: 20px 25px;
+        // padding: 20px 25px;
         transition: all 0.5s ease-in-out;
 
         &__wrapper {
             // width: 28.33%;
+            display: flex;
+            align-items: center;
             font-family: $inter;
             font-size: 20px;
             line-height: 100%;
-            background-color: $black; 
+            background-color: $black;
         }
 
         &__title {
@@ -563,6 +565,7 @@
             flex-direction: column;
             gap: 15px;
             background-color: $black;
+            padding: 0px 25px 0px 25px;
         }
 
         &__user-initials {
@@ -584,5 +587,85 @@
             background-color: $white;
             text-transform: capitalize;
         }
+
+        &__info {
+            padding: 40px 0px 0px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            background-color: $white;
+        }
+
+        &__section-title {
+            font-family: $forum;
+            font-size: 40px;
+            line-height: 50%;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: $black;
+        }
+
+        &__counters {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        &__counter--visits,
+        &__counter--bonuses,
+        &__counter--books {
+            @extend %my-profile-couners;
+        }
+
+        &__rented-books {
+            margin-right: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 350px;
+            font-family: $inter;
+            font-size: 25px;
+            line-height: 80%;
+            color: $dark;
+        }
+
+        &__books {
+            // column-count: auto;
+            // column-gap: 1em;
+            font-family: $inter;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: 0.1em;
+            text-transform: capitalize;
+            color: $black;
+        }
+
+        &__card-number {
+            margin-bottom: 39px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            font-family: $inter;
+            font-size: 20px;
+            line-height: 100%;
+        }
+
+        &__card-number-title {
+            color: $dark;
+        }
+
+        &__card-number-user {
+            color: $sand;
+        }
+
+        &__card-number-icon {
+            width: 13px;
+            height: 12px;
+        }
+    }
+
+    .profile.active {
+        top: 50%;
     }
 }
