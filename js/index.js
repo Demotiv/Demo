@@ -249,12 +249,17 @@ function closeMyProfile() {
   myProfileModal.classList.remove('active')
   modalBackDrop.classList.remove('active')
 }
-/*
+
 function copyCard() {
-  myProfileCardNumber.select()
+  const cardNumber = localStorage.getItem('card-number')
+  const tempInput = document.createElement('input')
+  tempInput.value = cardNumber
+  document.body.appendChild(tempInput)
+  tempInput.select()
   document.execCommand('copy')
+  document.body.removeChild(tempInput)
 }
-*/
+
 
 //------------------------------//---//------------------------------//
 // Local Storage

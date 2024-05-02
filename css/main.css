@@ -831,6 +831,7 @@ button {
 .header .profile__card-number-icon {
   width: 13px;
   height: 12px;
+  cursor: pointer;
 }
 .header .profile__close-btn {
   position: absolute;
