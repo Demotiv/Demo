@@ -320,17 +320,11 @@
             cursor: pointer;
         }
 
-        &__line {
-            width: 21px;
-            border: 2px solid $dark;
-
-            &.line-1 {
-                transform: translateY(6px) translateX(-2px) rotate(-45deg);
-            }
-
-            &.line-2 {
-                transform: translateY(2px) translateX(-2px) rotate(45deg);
-            }
+        &__close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
         }
 
         &__container {
@@ -440,17 +434,11 @@
             cursor: pointer;
         }
 
-        &__line {
-            width: 21px;
-            border: 2px solid $dark;
-
-            &.line-1 {
-                transform: translateY(6px) translateX(-2px) rotate(-45deg);
-            }
-
-            &.line-2 {
-                transform: translateY(2px) translateX(-2px) rotate(45deg);
-            }
+        &__close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
         }
 
         &__container {
@@ -662,6 +650,13 @@
         &__card-number-icon {
             width: 13px;
             height: 12px;
+        }
+
+        &__close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            cursor: pointer;
         }
     }
 

@@ -537,15 +537,11 @@ button {
   flex-direction: column;
   cursor: pointer;
 }
-.header .register__line {
-  width: 21px;
-  border: 2px solid #0C0C0E;
-}
-.header .register__line.line-1 {
-  transform: translateY(6px) translateX(-2px) rotate(-45deg);
-}
-.header .register__line.line-2 {
-  transform: translateY(2px) translateX(-2px) rotate(45deg);
+.header .register__close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
 }
 .header .register__container {
   display: flex;
@@ -642,15 +638,11 @@ button {
   flex-direction: column;
   cursor: pointer;
 }
-.header .log-in__line {
-  width: 21px;
-  border: 2px solid #0C0C0E;
-}
-.header .log-in__line.line-1 {
-  transform: translateY(6px) translateX(-2px) rotate(-45deg);
-}
-.header .log-in__line.line-2 {
-  transform: translateY(2px) translateX(-2px) rotate(45deg);
+.header .log-in__close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
 }
 .header .log-in__container {
   display: flex;
@@ -828,6 +820,12 @@ button {
 .header .profile__card-number-icon {
   width: 13px;
   height: 12px;
+}
+.header .profile__close-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
 }
 .header .profile.active {
   top: 50%;

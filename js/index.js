@@ -84,41 +84,61 @@ function closeDropDown() {
 //------------------------------//---//------------------------------//
 
 // Клик не по элементам
-document.addEventListener('click', outsideClick)
 
-function outsideClick(event) {
-  const hamburgerClick = event.target.closest('.hamburger')
-  const tabletMenuClick = event.target.closest('.tablet-menu')
-  const registerModalClick = event.target.closest('.register')
-  const logInModalClick = event.target.closest('.log-in')
-  const modalBackDropClick = event.target.closest('.modal-backdrop')
-  const guestIconClick = event.target.closest('.guest-profile')
-  const usericonClick = event.target.closest('.user-profile')
-  const myProfileClick = event.target.closest('.profile')
+document.addEventListener('click', outSideClick)
 
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    if (!hamburgerClick && !tabletMenuClick) {
-      closeTabletMenu()
+function outSideClick(event) {
+  // Клик не по Tablet Menu
+  if (tabletMenu.classList.contains('active')) {
+    const tabletMenuClick = event.target.closest('.tablet-menu')
+    const hamburgerClick = event.target.closest('.hamburger')
+
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      if (!hamburgerClick && !tabletMenuClick) {
+        closeTabletMenu()
+      }
+    }
+  }
+
+  // Клик не по Register
+  if (registerModal.classList.contains('active')) {
+    const registerModalClick = event.target.closest('.register')
+    const modalBackDropClick = event.target.closest('.modal-backdrop')
+
+    if (!registerModalClick && modalBackDropClick) {
+      closeRegisterModal()
+    }
+  }
+
+  // Клик не по Log In
+  if (logInModal.classList.contains('active')) {
+    const logInModalClick = event.target.closest('.log-in')
+    const modalBackDropClick = event.target.closest('.modal-backdrop')
+
+    if (!logInModalClick && modalBackDropClick) {
+      closeLogInModal()
+    }
+  }
+
+  // Клик не по guest || user icons
+  if (dropDown.classList.contains('active')) {
+    const guestIconClick = event.target.closest('.guest-profile')
+    const usericonClick = event.target.closest('.user-profile')
+
+    if (!guestIconClick && !usericonClick) {
       closeDropDown()
     }
   }
 
-  if (!registerModalClick && modalBackDropClick) {
-    closeRegisterModal()
-  }
+  // Клик не по My Profile
+  if (myProfileModal.classList.contains('active')) {
+    const myProfileModalClick = event.target.closest('.profile')
+    const modalBackDropClick = event.target.closest('.modal-backdrop')
 
-  if (!logInModalClick && modalBackDropClick) {
-    closeLogInModal()
+    if (!myProfileModalClick && modalBackDropClick) {
+      closeMyProfile()
+    }
   }
-
-  // Проверить!
-  if (!guestIconClick && !usericonClick) {
-    closeDropDown()
-  }
-
-  // if (myProfileModal.classList.contains('active') && !myProfileClick) {
-  //   closeMyProfile()
-  // }
 }
 
 //------------------------------//---//------------------------------//
@@ -128,7 +148,7 @@ function outsideClick(event) {
 const registerModal = document.querySelector('.register') // Окно регистрации
 const modalBackDrop = document.querySelector('.modal-backdrop') // Фон затемнения
 const registerLinks = document.querySelectorAll('a[href="#register"]') // Ссылка на регистрацию
-const registerLines = document.querySelectorAll('.register__lines-container') // Закрытие меню регистрации
+const registerCloseBtn = document.querySelectorAll('.register__close-btn') // Закрытие меню регистрации
 
 registerLinks.forEach(link => {
   link.addEventListener('click', event => {
@@ -145,7 +165,7 @@ function openRegisterModal() {
   logInModal.classList.remove('active')
 }
 
-registerLines.forEach(line => {
+registerCloseBtn.forEach(line => {
   line.addEventListener('click', () => {
     closeRegisterModal()
   })
@@ -163,7 +183,7 @@ function closeRegisterModal() {
 
 const logInModal = document.querySelector('.log-in')
 const logInLinks = document.querySelectorAll('a[href="#log-in"]')
-const logInLines = document.querySelectorAll('.log-in__lines-container')
+const logInCloseBtn = document.querySelectorAll('.log-in__close-btn')
 const logOut = document.querySelectorAll('a[href="#log-out"]')
 const userInitials = document.querySelectorAll('.user-profile__name')
 
@@ -182,7 +202,7 @@ function openLogInModal() {
   registerModal.classList.remove('active')
 }
 
-logInLines.forEach(line => {
+logInCloseBtn.forEach(line => {
   line.addEventListener('click', () => {
   closeLogInModal()
   })
@@ -199,10 +219,13 @@ function closeLogInModal() {
 //------------------------------//---//------------------------------//
 
 const myProfileModal = document.querySelector('.profile')
+const myProfileCloseBtn = document.querySelector('.profile__close-btn')
 
 myProfileLink.forEach(link => {
   link.addEventListener('click', openMyProfile)
 })
+
+myProfileCloseBtn.addEventListener('click', closeMyProfile)
 
 function openMyProfile() {
   myProfileModal.classList.add('active')
