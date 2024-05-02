@@ -515,16 +515,52 @@ booksBtn.forEach(book => {
   book.addEventListener('click', event => {
     event.preventDefault()
 
-    userIcon.forEach(icon => {
-      if (!icon.classList.contains('active')) {
-        openLogInModal()
-      } else {
+    const userIconActive = Array.from(userIcon).some(icon => icon.classList.contains('active'))
 
-      }
-    })
+    if (!userIconActive) {
+      openLogInModal()
+    } else if (book.classList.contains('active')) {
+      booksNotOwn(event.target)
+    } else {
+      booksOwn(event.target)
+    }
   })
 })
 
+function booksOwn(targetBtn) {
+  targetBtn.innerHTML = 'Own'
+  targetBtn.classList.add('active')
+
+  // Увеличения счётчика выбранных книг
+  let localBooksCounter = parseInt(localStorage.getItem('books'), 10) || 0
+  localBooksCounter += 1
+  localStorage.setItem('books', localBooksCounter)
+
+  // Добавление названия и автора
+  const title = targetBtn.closest('.books__body').querySelector('h4').textContent
+  const author = targetBtn.closest('.books__body').querySelector('p').textContent
+
+  const newLi = document.createElement('li')
+  newLi.textContent = `${title}, ${author}`
+  const booksList = document.querySelector('.profile__books-list')
+  booksList.appendChild(newLi)
+}
+
+function booksNotOwn(targetBtn) {
+  targetBtn.innerHTML = 'Buy'
+  targetBtn.classList.remove('active')
+
+  // Уменьшение счётчика выбранных книг
+  let localBooksCounter = parseInt(localStorage.getItem('books'), 10) || 0
+  localBooksCounter -= 1
+  localStorage.setItem('books', localBooksCounter)
+
+  // Удаление названия и автора
+  const title = targetBtn.closest('.books__body').querySelector('h4').textContent
+  const author = targetBtn.closest('.books__body').querySelector('p').textContent
+}
+
+// Выбор сезонов
 radioBtn.forEach((radio, indexBtn) => {
   radio.addEventListener('click', () => {
     booksClasses(indexBtn)

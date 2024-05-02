@@ -153,7 +153,7 @@ button {
   display: flex;
   flex-direction: column;
 }
-.favorites .cards-container .books__body button {
+.favorites .cards-container .books__body .books__button {
   margin-top: 15px;
   margin-bottom: 14px;
   width: 75px;
@@ -168,9 +168,13 @@ button {
   border-radius: 2px;
   cursor: pointer;
 }
-.favorites .cards-container .books__body button:hover {
+.favorites .cards-container .books__body .books__button:hover {
   border: 1px solid #BB945F;
   color: #BB945F;
+}
+.favorites .cards-container .books__body .books__button.active {
+  color: #BB945F;
+  border: 1px solid #BB945F;
 }
 .favorites .cards-container .books__title h4 {
   font-family: "Inter", sans-serif;

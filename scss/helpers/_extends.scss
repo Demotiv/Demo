@@ -201,7 +201,7 @@
             display: flex;
             flex-direction: column;
 
-            button {
+            .books__button {
                 margin-top: 15px;
                 margin-bottom: 14px;
                 width: 75px;
@@ -220,6 +220,11 @@
                     border: 1px solid $sand;
                     color: $sand;
                 }
+            }
+
+            .books__button.active {
+                color: $sand;
+                border: 1px solid $sand;
             }
         }
 
