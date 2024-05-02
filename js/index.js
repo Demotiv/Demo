@@ -223,6 +223,7 @@ const myProfileCloseBtn = document.querySelector('.profile__close-btn')
 
 const myProfileVisits = document.querySelector('.hit-counter')
 const myProfileBonuses = document.querySelector('.bonuses-counter')
+const myProfileBooks = document.querySelector('.books-counter')
 const myProfileCardNumber =document.querySelector('.profile__card-number-user')
 
 myProfileLink.forEach(link => {
@@ -237,6 +238,7 @@ function openMyProfile() {
 
   myProfileVisits.innerHTML = localStorage.getItem('visited')
   myProfileBonuses.innerHTML = localStorage.getItem('bonuses')
+  myProfileBooks.innerHTML = localStorage.getItem('books')
   myProfileCardNumber.innerHTML = localStorage.getItem('card-number')
 }
 
@@ -333,6 +335,8 @@ function userIsIn(firstName, lastName) {
   dropMenuCardNumber.innerHTML = localStorage.getItem('card-number')
   dropMenuCardNumber.style.fontSize = '12px'
 
+  localStorage.setItem('books', 0)
+
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
 
@@ -371,7 +375,8 @@ const cardForm = document.querySelector('.card__form') // Форма Library Car
 const cardBtn = document.querySelector('.find-card-btn') // Library Cards Button
 const userInfo =document.querySelector('.user-info') // User Info
 const visitedCounter = document.querySelector('.library-hit-counter') // Счетчик посещений
-const bonusesCounter = document.querySelector('.library-bonuses-counter')
+const bonusesCounter = document.querySelector('.library-bonuses-counter') // Счетчик бонусов
+const booksCounter = document.querySelector('.library-books-counter')
 
 cardForm.addEventListener('submit', event => {
   event.preventDefault()
@@ -404,6 +409,7 @@ function showUserInfo() {
 
   visitedCounter.innerHTML = localStorage.getItem('visited')
   bonusesCounter.innerHTML = localStorage.getItem('bonuses')
+  booksCounter.innerHTML = localStorage.getItem('books')
 }
 
 // Скрытие информации пользователя
@@ -508,7 +514,14 @@ const booksBtn = document.querySelectorAll('.books__button')
 booksBtn.forEach(book => {
   book.addEventListener('click', event => {
     event.preventDefault()
-    openLogInModal()
+
+    userIcon.forEach(icon => {
+      if (!icon.classList.contains('active')) {
+        openLogInModal()
+      } else {
+
+      }
+    })
   })
 })
 
