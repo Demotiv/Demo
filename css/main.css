@@ -787,19 +787,26 @@ button {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  max-width: 350px;
+  width: 350px;
+}
+.header .profile__rented-title {
   font-family: "Inter", sans-serif;
   font-size: 25px;
   line-height: 80%;
   color: #0C0C0E;
 }
-.header .profile__books {
+.header .profile__books-list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   font-family: "Inter", sans-serif;
   font-size: 20px;
   line-height: 100%;
   letter-spacing: 0.1em;
   text-transform: capitalize;
   color: #000000;
+  list-style-type: disc;
 }
 .header .profile__card-number {
   margin-bottom: 39px;
