@@ -362,6 +362,7 @@ function userIsIn(firstName, lastName) {
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
 
+  visitProfileOn()
   showUserInfo()
 }
 
@@ -369,6 +370,7 @@ function userIsIn(firstName, lastName) {
 logOut.forEach(link => {
   link.addEventListener('click', event => {
     event.preventDefault()
+    removeBooksBtn()
     userIsOut()
   })
 })
@@ -382,9 +384,13 @@ function userIsOut() {
     icon.style.display = 'block'
   })
 
+  dropMenuCardNumber.innerHTML = 'Profile'
+  dropMenuCardNumber.style.fontSize = '15px'
+
   userMenu.style.display = 'none'
   guestMenu.style.display = 'flex'
 
+  visitProfileOff()
   hidenUserInfo()
 }
 
@@ -399,6 +405,24 @@ const userInfo =document.querySelector('.user-info') // User Info
 const visitedCounter = document.querySelector('.library-hit-counter') // Счетчик посещений
 const bonusesCounter = document.querySelector('.library-bonuses-counter') // Счетчик бонусов
 const booksCounter = document.querySelector('.library-books-counter')
+const getACard = document.querySelector('.get-a-card')
+const visitProfile = document.querySelector('.visit-profile')
+const visitProfileBtn = document.querySelector('.visit-profile-button')
+
+visitProfileBtn.addEventListener('click', event => {
+  event.preventDefault()
+  openMyProfile()
+})
+
+function visitProfileOn() {
+  getACard.style.display = 'none'
+  visitProfile.classList.add('active')
+}
+
+function visitProfileOff() {
+  getACard.style.display = 'flex'
+  visitProfile.classList.remove('active')
+}
 
 cardForm.addEventListener('submit', event => {
   event.preventDefault()
@@ -532,19 +556,22 @@ window.addEventListener('resize', () => {
 const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
 const books = document.querySelectorAll('.books-wrapper')
 const booksBtn = document.querySelectorAll('.books__button')
-/*
+
 booksBtn.forEach(book => {
   book.addEventListener('click', event => {
     event.preventDefault()
 
     const userIconActive = Array.from(userIcon).some(icon => icon.classList.contains('active'))
+    const savedBankCardNumber = localStorage.getItem('bank-card-number')
 
     if (!userIconActive) {
       openLogInModal()
     } else if (book.classList.contains('active')) {
       booksNotOwn(event.target)
-    } else {
+    } else  if (savedBankCardNumber) {
       booksOwn(event.target)
+    } else {
+      openBuyACard()
     }
   })
 })
@@ -589,7 +616,14 @@ function booksNotOwn(targetBtn) {
     }
   })
 }
-*/
+
+function removeBooksBtn() {
+  booksBtn.forEach(book => {
+    book.innerHTML = 'Buy'
+    book.classList.remove('active')
+  })
+}
+
 // Выбор сезонов
 radioBtn.forEach((radio, indexBtn) => {
   radio.addEventListener('click', () => {
@@ -645,6 +679,7 @@ function booksPos(indexBook) {
 
 const buyACard = document.querySelector('.buy-card')
 const buyACardBtn = document.querySelector('.buy-card__close_btn')
+const buyACardForm = document.querySelector('.buy-card__form')
 
 buyACardBtn.addEventListener('click', closeBuyACard)
 
@@ -658,13 +693,31 @@ function closeBuyACard() {
   modalBackDrop.classList.remove('active')
 }
 
-booksBtn.forEach(book => {
-  book.addEventListener('click', buyingACard)
-})
+// booksBtn.forEach(book => {
+//   book.addEventListener('click', buyingACard)
+// })
 
 function buyingACard() {
   const userIconActive = Array.from(userIcon).some(icon => icon.classList.contains('active'))
   if (userIconActive) {
     openBuyACard()
   }
+}
+
+buyACardForm.addEventListener('submit', event => {
+  event.preventDefault()
+  checkBuyACardForm()
+})
+
+function checkBuyACardForm() {
+  const formData = new FormData(buyACardForm)
+  const formValue = Object.fromEntries(formData.entries())
+
+  if (buyACardForm.checkValidity()) {
+    for (let key in formValue) {
+      localStorage.setItem(key, formValue[key])
+    }
+  }
+
+  closeBuyACard()
 }
