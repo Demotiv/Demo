@@ -139,6 +139,15 @@ function outSideClick(event) {
       closeMyProfile()
     }
   }
+
+  if (buyACard.classList.contains('active')) {
+    const buyACardClick = event.target.closest('.buy-card')
+    const modalBackDropClick = event.target.closest('.modal-backdrop')
+
+    if (!buyACardClick && modalBackDropClick) {
+      closeBuyACard()
+    }
+  }
 }
 
 //------------------------------//---//------------------------------//
@@ -523,7 +532,7 @@ window.addEventListener('resize', () => {
 const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
 const books = document.querySelectorAll('.books-wrapper')
 const booksBtn = document.querySelectorAll('.books__button')
-
+/*
 booksBtn.forEach(book => {
   book.addEventListener('click', event => {
     event.preventDefault()
@@ -580,7 +589,7 @@ function booksNotOwn(targetBtn) {
     }
   })
 }
-
+*/
 // Выбор сезонов
 radioBtn.forEach((radio, indexBtn) => {
   radio.addEventListener('click', () => {
@@ -631,3 +640,31 @@ function booksPos(indexBook) {
 }
 
 //------------------------------//---//------------------------------//
+// Buy A Library Card
+//------------------------------//---//------------------------------//
+
+const buyACard = document.querySelector('.buy-card')
+const buyACardBtn = document.querySelector('.buy-card__close_btn')
+
+buyACardBtn.addEventListener('click', closeBuyACard)
+
+function openBuyACard() {
+  buyACard.classList.add('active')
+  modalBackDrop.classList.add('active')
+}
+
+function closeBuyACard() {
+  buyACard.classList.remove('active')
+  modalBackDrop.classList.remove('active')
+}
+
+booksBtn.forEach(book => {
+  book.addEventListener('click', buyingACard)
+})
+
+function buyingACard() {
+  const userIconActive = Array.from(userIcon).some(icon => icon.classList.contains('active'))
+  if (userIconActive) {
+    openBuyACard()
+  }
+}

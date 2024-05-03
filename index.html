@@ -164,6 +164,49 @@
             </div>
             <img src="./img/close_btn.png" alt="close_btn" class="profile__close-btn">
         </div>
+        <div class="buy-card">
+            <h2>Buy a library card</h2>
+            <div class="buy-card__wrapper">
+                <form action="#" method="get" class="buy-card__form" id="buy-card__form">
+    
+                    <label for="card-number">Bank card number</label>
+                    <input type="text" name="card-number" id="card-number" pattern="[0-9]{16}" required>
+    
+                    <div class="buy-card__form_expiration-code">
+                        <label for="expiration-code">Expiration Code</label>
+                        <div class="input-wrapper">
+                            <input type="text" name="expiration-code-month" id="expiration-code-month" class="input-part-1" pattern="[0-9]{2}" required>
+                            <input type="text" name="expiration-code-year" id="expiration-code-year" class="input-part-2" pattern="[0-9]{2}" required>
+                        </div>
+                    </div>
+    
+                    <label for="cvc">CVC</label>
+                    <input type="text" name="cvc" id="cvc" class="cvc" pattern="[0-9]{3}" required>
+    
+                    <label for="cardholder">Cardholder name</label>
+                    <input type="text" name="cardholder" id="cardholder" required>
+    
+                    <label for="postal-code">Postal Code</label>
+                    <input type="text" name="postal-code" id="postal-code" required>
+    
+                    <label for="city-town">City / Town</label>
+                    <input type="text" name="city-town" id="city-town" required>
+                    
+                    <div class="buy-card__price">
+                        <button type="submit" form="buy-card__form">Buy</button>
+                        <span>$ 25.00</span>
+                    </div>
+                </form>
+                <div class="buy-card__info">
+                    <p>
+                        If you are live, work, attend school, or pay property taxes in New York State, 
+                        you can get a $25 digital library card right now using this online form. 
+                        Visitors to New York State can also use this form to apply for a temporary card.
+                    </p>
+                </div>
+            </div>
+            <img src="./img/close_btn-white.png" alt="close_btn-white" class="buy-card__close_btn">
+        </div>
     </header>
     <main>
         <section class="welcome" id="welcome">
@@ -767,7 +810,7 @@
                             <input type="text" id="cardNumber" name="card-number" pattern="[a-zA-Z0-9]{1,9}" placeholder="Card number">
                             <label for="cardNumber"></label>
                         </form>
-                        <button form="find-card-form" class="find-card-btn">Check the card</button>
+                        <button type="submit" form="find-card-form" class="find-card-btn">Check the card</button>
                         <div class="user-info">
                             <div class="user-info__visits">
                                 <h5>Visits</h5>

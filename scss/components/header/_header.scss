@@ -669,4 +669,133 @@
     .profile.active {
         top: 50%;
     }
+
+    .buy-card {
+        position: fixed;
+        top: -500%; // -500%
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 4;
+        transition: all 0.5s ease-in-out;
+        background-color: $black;
+
+        h2 {
+            padding: 20px 0px 20px 0px;
+            font-family: $forum;
+            font-size: 40px;
+            line-height: 50%;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-align: center;
+            color: $white;
+        }
+
+        &__wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            background-color: $white;
+        }
+
+        &__form {
+            padding: 30px 0px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            
+            label {
+                font-family: $inter;
+                font-size: 15px;
+                line-height: 133%;
+                letter-spacing: 0.02em;
+                color: $black;
+            }
+
+            input {
+                border: 1px solid $sand;
+                width: 200px;
+                height: 20px;
+            }
+
+            .cvc {
+                margin-bottom: 10px;
+                border: 1px solid #bb945f;
+                width: 45px;
+                height: 20px;
+            }
+        }
+
+        &__form_expiration-code {
+           display: flex;
+           flex-direction: column;
+
+            .input-wrapper {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                .input-part-1,
+                .input-part-2 {
+                    border: 1px solid $sand;
+                    width: 45px;
+                    height: 20px;
+                }
+            }
+        }
+
+        &__price {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 25px;
+
+            button {
+                width: 75px;
+                height: 30px;
+                border: 1px solid $black;
+                border-radius: 2px;
+                color: $black;
+                cursor: pointer;
+
+                &:hover {
+                    border: 1px solid $sand;
+                    color: $sand;
+                }
+            }
+
+            span {
+                font-family: $inter;
+                font-weight: bold;
+                line-height: 100%;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: $dark;
+            }
+        }
+
+        &__info {
+            max-width: 330px;
+            font-family: $inter;
+            font-size: 15px;
+            line-height: 133%;
+            letter-spacing: 0.13em;
+            color: $grey;
+
+            p {
+                padding: 30px 40px 0px 0px;
+            }
+        }
+
+        &__close_btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            cursor: pointer;
+        }
+    }
+
+    .buy-card.active {
+        top: 50%;
+    }
 }
