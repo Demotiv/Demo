@@ -1,3 +1,4 @@
+'use strict'
 //------------------------------//---//------------------------------//
 //Tablet menu
 //------------------------------//---//------------------------------//
@@ -312,6 +313,9 @@ function saveFormData() {
 
   localStorage.setItem('full-name', `${firstName} ${lastName}`)
 
+  localStorage.setItem('books', 0)
+  localStorage.setItem('selected-books', null)
+
   userIsIn(firstName, lastName)
 }
 
@@ -365,7 +369,21 @@ function userIsIn(firstName, lastName) {
   dropMenuCardNumber.innerHTML = localStorage.getItem('card-number')
   dropMenuCardNumber.style.fontSize = '12px'
 
-  localStorage.setItem('books', 0)
+  // localStorage.setItem('books', 0)
+  let selectedBooks = localStorage.getItem('selected-books')
+
+  if (selectedBooks !== null) {
+    selectedBooks = JSON.parse(selectedBooks)
+
+    const allBooksBtn = document.querySelectorAll('.books__button')
+
+    if (Array.isArray(selectedBooks)) {
+      selectedBooks.forEach(index => {
+        allBooksBtn[index].innerHTML = 'Own'
+        allBooksBtn[index].classList.add('active')
+      })
+    }
+  }
 
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
@@ -550,12 +568,12 @@ window.addEventListener('resize', () => {
   let currentIndex = carouselBtnsArray.findIndex(btn => btn.classList.contains('selected'))
 
   if (window.matchMedia("(max-width: 768px)").matches) {
-    carousel(currentIndex, slidePos = 34, tabletSlidePos = 105.5)
+    carousel(currentIndex, 34, 105.5) // slidePos = 34, tabletSlidePos = 105.5
   } else {
     if (currentIndex > 2) {
-      carousel(currentIndex - 2, slidePos = 34, tabletSlidePos = 105.5)
+      carousel(currentIndex - 2, 34, 105.5) // slidePos = 34, tabletSlidePos = 105.5
     } else {
-      carousel(currentIndex, slidePos = 34, tabletSlidePos = 105.5)
+      carousel(currentIndex, 34, 105.5) // slidePos = 34, tabletSlidePos = 105.5
     }
   }
 })
@@ -569,7 +587,7 @@ const books = document.querySelectorAll('.books-wrapper') // Блоки с кн�
 const booksBtn = document.querySelectorAll('.books__button') // Покупка книги
 
 // Выбор книг
-booksBtn.forEach(book => {
+booksBtn.forEach((book, indexBook) => {
   book.addEventListener('click', event => {
     event.preventDefault()
 
@@ -579,9 +597,9 @@ booksBtn.forEach(book => {
     if (!userIconActive) {
       openLogInModal()
     } else if (book.classList.contains('active')) {
-      booksNotOwn(event.target)
+      booksNotOwn(event.target, indexBook)
     } else  if (savedBankCardNumber) {
-      booksOwn(event.target)
+      booksOwn(event.target, indexBook)
     } else {
       openBuyACard()
     }
@@ -589,7 +607,7 @@ booksBtn.forEach(book => {
 })
 
 // Выбранная книга
-function booksOwn(targetBtn) {
+function booksOwn(targetBtn, indexBook) {
   targetBtn.innerHTML = 'Own'
   targetBtn.classList.add('active')
 
@@ -606,10 +624,15 @@ function booksOwn(targetBtn) {
   newLi.textContent = `${title}, ${author}`
   const booksList = document.querySelector('.profile__books-list')
   booksList.appendChild(newLi)
+
+  // Сохранение выбранных книг
+  let selectedBooks = JSON.parse(localStorage.getItem('selected-books')) || []
+  selectedBooks.push(indexBook)
+  localStorage.setItem('selected-books', JSON.stringify(selectedBooks))
 }
 
 // Удаление выбранной книги
-function booksNotOwn(targetBtn) {
+function booksNotOwn(targetBtn, indexBook) {
   targetBtn.innerHTML = 'Buy'
   targetBtn.classList.remove('active')
 
@@ -629,8 +652,12 @@ function booksNotOwn(targetBtn) {
       li.remove()
     }
   })
-}
 
+  // Удаление выбранных книг
+  let selectedBooks = JSON.parse(localStorage.getItem('selected-books')) || []
+  selectedBooks = selectedBooks.filter(el => el !== indexBook)
+  localStorage.setItem('selected-books', JSON.stringify(selectedBooks))
+}
 
 function removeBooksBtn() {
   booksBtn.forEach(book => {
@@ -709,17 +736,6 @@ function closeBuyACard() {
   buyACard.classList.remove('active')
   modalBackDrop.classList.remove('active')
 }
-
-// booksBtn.forEach(book => {
-//   book.addEventListener('click', buyingACard)
-// })
-
-// function buyingACard() {
-//   const userIconActive = Array.from(userIcon).some(icon => icon.classList.contains('active'))
-//   if (userIconActive) {
-//     openBuyACard()
-//   }
-// }
 
 // Форма Buy A Card
 buyACardForm.addEventListener('submit', event => {
