@@ -50,7 +50,7 @@ const guestIcon = document.querySelectorAll('.guest-profile') // Иконка г
 const guestMenu = document.querySelector('.dropMenu__guest') // Меню гостя
 const userIcon = document.querySelectorAll('.user-profile') // Иконка пользователя
 const userMenu = document.querySelector('.dropMenu__user') // Меню пользователя
-const myProfileLink = document.querySelectorAll('a[href="#my-profile"]')
+const myProfileLink = document.querySelectorAll('a[href="#my-profile"]') // Ссылка на My Profile 
 
 // Открытие/Закрытие Drop Down menu гостем
 guestIcon.forEach(icon => {
@@ -140,6 +140,7 @@ function outSideClick(event) {
     }
   }
 
+  // Клик не по Buy A Cards
   if (buyACard.classList.contains('active')) {
     const buyACardClick = event.target.closest('.buy-card')
     const modalBackDropClick = event.target.closest('.modal-backdrop')
@@ -166,6 +167,13 @@ registerLinks.forEach(link => {
   })
 })
 
+// Закрытие нажатием на крестик
+registerCloseBtn.forEach(line => {
+  line.addEventListener('click', () => {
+    closeRegisterModal()
+  })
+})
+
 // Открытие окна регистрации
 function openRegisterModal() {
   registerModal.classList.add('active')
@@ -173,12 +181,6 @@ function openRegisterModal() {
   dropDown.classList.remove('active')
   logInModal.classList.remove('active')
 }
-
-registerCloseBtn.forEach(line => {
-  line.addEventListener('click', () => {
-    closeRegisterModal()
-  })
-})
 
 // Закрытие окна регистрации
 function closeRegisterModal() {
@@ -190,16 +192,23 @@ function closeRegisterModal() {
 // Log in
 //------------------------------//---//------------------------------//
 
-const logInModal = document.querySelector('.log-in')
-const logInLinks = document.querySelectorAll('a[href="#log-in"]')
-const logInCloseBtn = document.querySelectorAll('.log-in__close-btn')
-const logOut = document.querySelectorAll('a[href="#log-out"]')
-const userInitials = document.querySelectorAll('.user-profile__name')
+const logInModal = document.querySelector('.log-in') // Окно Log-in
+const logInLinks = document.querySelectorAll('a[href="#log-in"]') // Ссыдка на Log-in
+const logInCloseBtn = document.querySelectorAll('.log-in__close-btn') // Крестик в окне Log-in
+const logOut = document.querySelectorAll('a[href="#log-out"]') // Выход из аккаунта
+const userInitials = document.querySelectorAll('.user-profile__name') // Инициалы пользователя
 
 logInLinks.forEach(link => {
   link.addEventListener('click', event => {
   event.preventDefault()
   openLogInModal()
+  })
+})
+
+// Закрытие нажатием на крестик
+logInCloseBtn.forEach(line => {
+  line.addEventListener('click', () => {
+  closeLogInModal()
   })
 })
 
@@ -211,12 +220,6 @@ function openLogInModal() {
   registerModal.classList.remove('active')
 }
 
-logInCloseBtn.forEach(line => {
-  line.addEventListener('click', () => {
-  closeLogInModal()
-  })
-})
-
 // Закрытие окна Log In
 function closeLogInModal() {
   logInModal.classList.remove('active')
@@ -227,23 +230,26 @@ function closeLogInModal() {
 // My Profile
 //------------------------------//---//------------------------------//
 
-const myProfileModal = document.querySelector('.profile')
-const myProfileCloseBtn = document.querySelector('.profile__close-btn')
+const myProfileModal = document.querySelector('.profile') // Окно My Profile
+const myProfileCloseBtn = document.querySelector('.profile__close-btn') // Крестик окна My Profile
 
-const myProfileVisits = document.querySelector('.hit-counter')
-const myProfileBonuses = document.querySelector('.bonuses-counter')
-const myProfileBooks = document.querySelector('.books-counter')
-const myProfileCardNumber = document.querySelector('.profile__card-number-user')
-const myProfileCopyCardNumber = document.querySelector('.profile__card-number-icon')
+const myProfileVisits = document.querySelector('.hit-counter') // Счетчик посещений
+const myProfileBonuses = document.querySelector('.bonuses-counter') // Счеткик бонусов
+const myProfileBooks = document.querySelector('.books-counter') // Счетчик выбранных книг
+const myProfileCardNumber = document.querySelector('.profile__card-number-user') // Номек карты пользователя
+const myProfileCopyCardNumber = document.querySelector('.profile__card-number-icon') // Копирование карты
 
 myProfileLink.forEach(link => {
   link.addEventListener('click', openMyProfile)
 })
 
+// Закрытие на крестик
 myProfileCloseBtn.addEventListener('click', closeMyProfile)
 
+// Копирование номера карты
 myProfileCopyCardNumber.addEventListener('click', copyCard)
 
+// Открытие окна My Profile
 function openMyProfile() {
   myProfileModal.classList.add('active')
   modalBackDrop.classList.add('active')
@@ -254,11 +260,13 @@ function openMyProfile() {
   myProfileCardNumber.innerHTML = localStorage.getItem('card-number')
 }
 
+// Закрытие окна My Profile
 function closeMyProfile() {
   myProfileModal.classList.remove('active')
   modalBackDrop.classList.remove('active')
 }
 
+// Функция копирования номера карты
 function copyCard() {
   const cardNumber = localStorage.getItem('card-number')
   const tempInput = document.createElement('input')
@@ -404,21 +412,23 @@ const cardBtn = document.querySelector('.find-card-btn') // Library Cards Button
 const userInfo =document.querySelector('.user-info') // User Info
 const visitedCounter = document.querySelector('.library-hit-counter') // Счетчик посещений
 const bonusesCounter = document.querySelector('.library-bonuses-counter') // Счетчик бонусов
-const booksCounter = document.querySelector('.library-books-counter')
-const getACard = document.querySelector('.get-a-card')
-const visitProfile = document.querySelector('.visit-profile')
-const visitProfileBtn = document.querySelector('.visit-profile-button')
+const booksCounter = document.querySelector('.library-books-counter') // Счетчик книг
+const getACard = document.querySelector('.get-a-card') // Окно гостя в Library Card
+const visitProfile = document.querySelector('.visit-profile') // Окно пользователя в Library Card
+const visitProfileBtn = document.querySelector('.visit-profile-button') // Ссылка на профиль
 
 visitProfileBtn.addEventListener('click', event => {
   event.preventDefault()
   openMyProfile()
 })
 
+// Появление информации для пользователя
 function visitProfileOn() {
   getACard.style.display = 'none'
   visitProfile.classList.add('active')
 }
 
+// Появление информации для гостя
 function visitProfileOff() {
   getACard.style.display = 'flex'
   visitProfile.classList.remove('active')
@@ -429,6 +439,7 @@ cardForm.addEventListener('submit', event => {
   checkCardForm()
 })
 
+// Проверка данных в Library Card
 function checkCardForm() {
   const formData = new FormData(cardForm)
   const formValue = Object.fromEntries(formData.entries())
@@ -553,10 +564,11 @@ window.addEventListener('resize', () => {
 // Favorites block
 //------------------------------//---//------------------------------//
 
-const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]')
-const books = document.querySelectorAll('.books-wrapper')
-const booksBtn = document.querySelectorAll('.books__button')
+const radioBtn = document.querySelectorAll('.radio-container input[type="radio"]') // Выбор сезонов
+const books = document.querySelectorAll('.books-wrapper') // Блоки с книгами
+const booksBtn = document.querySelectorAll('.books__button') // Покупка книги
 
+// Выбор книг
 booksBtn.forEach(book => {
   book.addEventListener('click', event => {
     event.preventDefault()
@@ -576,6 +588,7 @@ booksBtn.forEach(book => {
   })
 })
 
+// Выбранная книга
 function booksOwn(targetBtn) {
   targetBtn.innerHTML = 'Own'
   targetBtn.classList.add('active')
@@ -595,6 +608,7 @@ function booksOwn(targetBtn) {
   booksList.appendChild(newLi)
 }
 
+// Удаление выбранной книги
 function booksNotOwn(targetBtn) {
   targetBtn.innerHTML = 'Buy'
   targetBtn.classList.remove('active')
@@ -616,6 +630,7 @@ function booksNotOwn(targetBtn) {
     }
   })
 }
+
 
 function removeBooksBtn() {
   booksBtn.forEach(book => {
@@ -677,17 +692,19 @@ function booksPos(indexBook) {
 // Buy A Library Card
 //------------------------------//---//------------------------------//
 
-const buyACard = document.querySelector('.buy-card')
-const buyACardBtn = document.querySelector('.buy-card__close_btn')
-const buyACardForm = document.querySelector('.buy-card__form')
+const buyACard = document.querySelector('.buy-card') // окно Buy A Card
+const buyACardBtn = document.querySelector('.buy-card__close_btn') // Крестик закрытия 
+const buyACardForm = document.querySelector('.buy-card__form') // Форма Buy A CArd
 
 buyACardBtn.addEventListener('click', closeBuyACard)
 
+// Отккрытие окна 
 function openBuyACard() {
   buyACard.classList.add('active')
   modalBackDrop.classList.add('active')
 }
 
+// Закрытие окна
 function closeBuyACard() {
   buyACard.classList.remove('active')
   modalBackDrop.classList.remove('active')
@@ -697,18 +714,20 @@ function closeBuyACard() {
 //   book.addEventListener('click', buyingACard)
 // })
 
-function buyingACard() {
-  const userIconActive = Array.from(userIcon).some(icon => icon.classList.contains('active'))
-  if (userIconActive) {
-    openBuyACard()
-  }
-}
+// function buyingACard() {
+//   const userIconActive = Array.from(userIcon).some(icon => icon.classList.contains('active'))
+//   if (userIconActive) {
+//     openBuyACard()
+//   }
+// }
 
+// Форма Buy A Card
 buyACardForm.addEventListener('submit', event => {
   event.preventDefault()
   checkBuyACardForm()
 })
 
+// Сохранение формы Buy A Card
 function checkBuyACardForm() {
   const formData = new FormData(buyACardForm)
   const formValue = Object.fromEntries(formData.entries())
