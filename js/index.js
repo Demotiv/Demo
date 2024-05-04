@@ -369,7 +369,6 @@ function userIsIn(firstName, lastName) {
   dropMenuCardNumber.innerHTML = localStorage.getItem('card-number')
   dropMenuCardNumber.style.fontSize = '12px'
 
-  // localStorage.setItem('books', 0)
   let selectedBooks = localStorage.getItem('selected-books')
 
   if (selectedBooks !== null) {
@@ -381,10 +380,29 @@ function userIsIn(firstName, lastName) {
       selectedBooks.forEach(index => {
         allBooksBtn[index].innerHTML = 'Own'
         allBooksBtn[index].classList.add('active')
+
+        const book = allBooksBtn[index].closest('.books__body')
+
+        const title = book.querySelector('h4').textContent
+        const author = book.querySelector('p').textContent
+
+        const newLi = document.createElement('li')
+        newLi.textContent = `${title}, ${author}`
+        const booksList = document.querySelector('.profile__books-list')
+        booksList.appendChild(newLi)
       })
     }
   }
 
+  /*
+  const title = targetBtn.closest('.books__body').querySelector('h4').textContent
+  const author = targetBtn.closest('.books__body').querySelector('p').textContent
+
+  const newLi = document.createElement('li')
+  newLi.textContent = `${title}, ${author}`
+  const booksList = document.querySelector('.profile__books-list')
+  booksList.appendChild(newLi)
+  */
   guestMenu.style.display = 'none'
   userMenu.style.display = 'flex'
 
@@ -481,6 +499,15 @@ function checkCardForm() {
 function showUserInfo() {
   cardBtn.style.display = 'none'
   userInfo.style.display = 'flex'
+
+  const fullName = document.getElementById('name')
+  const cardNumber = document.getElementById('cardNumber')
+
+  fullName.value = localStorage.getItem('full-name')
+  cardNumber.value = localStorage.getItem('card-number')
+
+  fullName.style.color = '#BB945F'
+  cardNumber.style.color = '#BB945F'
 
   visitedCounter.innerHTML = localStorage.getItem('visited')
   bonusesCounter.innerHTML = localStorage.getItem('bonuses')
